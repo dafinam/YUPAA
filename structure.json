@@ -1,0 +1,141 @@
+{
+  "user": [
+    {
+      "id": "sajkhfdjdlksafhgfjdls",
+      "completed_tour": false,
+      "nickname": "Jimmy" 
+    }
+  ],
+  "yupaa_hidrate": [
+    {
+      "id": "sadkljkfhsgjkjldsa",
+      "user_id": "fjdhgjkdsajfhgjdsk;dslgjk",
+      "wakeup_time": "0730",
+      "lunch_break": "1130",
+      "dinner": "1830",
+      "sleep_time": "2300",
+      "activated": true,
+      "logs": [
+        {
+          "date": "05/06/19",
+          "morning": true,
+          "lunch": true,
+          "dinner": true,
+          "evening": true
+        },
+        {
+          "date": "06/06/19",
+          "morning": true,
+          "lunch": true,
+          "dinner": true,
+          "evening": false
+        }
+      ]
+    }
+  ],
+  "yupaa_breakfast": [
+    {
+      "id": "jfkhbdkfldsafghbfjalskd",
+      "user_id": "fdskljkghdkdls;afjgh",
+      "time": "0715",
+      "activated": true,
+      "reminders": [
+        "monday",
+        "wednesday",
+        "friday",
+        "saturday",
+        "sunday"
+      ],
+      "shopping_day": "monday",
+      "shopping_time": "1500",
+      "breakfast_id": "fsdfdgfdasfgdasdf",
+      "logs": [
+        "05/06/19",
+        "06/06/19",
+        "07/06/19"
+      ]
+    }
+  ],
+  "yupaa_stretching": [
+    {
+      "id": "ljkfhjldafsgkldasfgjk",
+      "user_id": "fkfjhdgkl;gslfdhjlkfdsgl",
+      "time": "1230",
+      "duration": 120,
+      "activated": true,
+      "is_private": true, // If false, the activity will show up on the social circle "Brikend Rama started YUPAA Stretching"
+      "logs": [
+        "05/06/19",
+        "07/06/19",
+        "08/06/19"
+      ]
+    }
+  ],
+  "yupaa_posture": [
+    {
+      "id": "ljkfhjldafsgkldasfgjk",
+      "user_id": "fkfjhdgkl;gslfdhjlkfdsgl",
+      "time": "1530",
+      "activated": true,
+      "is_private": true,
+      "duration": 300,
+      "logs": [
+        "05/06/19",
+        "07/06/19",
+        "08/06/19"
+      ]
+    }
+  ],
+  "yupaa_others": [
+    {
+      "id": "dakljskfhjlkdasfkhlkasd",
+      "user_id": "dfjkgnladsjkbnldskb",
+      "activity_name": "Drink tea",
+      "time": "1200",
+      "activated": true,
+      "is_private": true,
+      "share_activity": true, // IF true, other users from your circle can start this activity with the same configuration (frequency, time, name)
+      "reminders": [
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    },
+    {
+      "id": "dakljskfhjlkdasfkhlkasd",
+      "user_id": "dfjkgnladsjkbnldskb",
+      "activity_name": "Reading",
+      "time": "1900",
+      "activated": false,
+      "is_private": true,
+      "share_activity": true, // IF true, other users from your circle can start this activity with the same configuration (frequency, time, name)
+      "reminders": [
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    }
+  ],
+  "breakfast_suggestions": [
+    {
+      "id": "fsdfdgfdasfgdasdf",
+      "name": "italian breakfast",
+      "portion": 1,
+      "time": "10 minutes",
+      "instructions":"lfjbkhdhfkjh fh dfhakjsdhfkjdhj kfhadskj fjdsah kjfhadkj fhkjad hfkdasf jsdhfk jdshfjk dsfhdskhf dsfkajsdhfdsa fhd akdsjfhaks djfhadjks fhjdsfkhaksdfh",
+      "imageURL": "http://breakfast-kings.com/italian/4tou489ty3423/ioguh34h5fd.png",
+      "ingredients": [
+        {
+          "name": "eggs",
+          "qty": 2,
+          "unit": ""
+        },
+        {
+          "name": "cherry tomatoes",
+          "qty": "150",
+          "unit": "gram"
+        }
+      ]
+    }
+  ]
+}
