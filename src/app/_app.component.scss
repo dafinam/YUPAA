@@ -1,2 +1,12 @@
 // Custom common variables
 @import '../app-variables';
+
+.action-bar-custom {
+  padding-left: 15;
+  padding-right: 15;
+
+  .title {
+    font-size: 28pt;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,18 @@
+<TabView #mainTab androidTabsPosition="bottom">
+
+  <page-router-outlet *tabItem="{title: 'Social'}" name="socialTab" actionBarVisibility="never">
+  </page-router-outlet>
+
+  <page-router-outlet *tabItem="{title: 'New'}" name="newActivityTab" actionBarVisibility="never">
+  </page-router-outlet>
+
+  <page-router-outlet *tabItem="{title: 'Home', iconSource: getIconSource('home')}" name="homeTab" actionBarVisibility="never">
+  </page-router-outlet>
+
+  <page-router-outlet *tabItem="{title: 'Streak'}" name="streakTab" actionBarVisibility="never">
+  </page-router-outlet>
+
+  <page-router-outlet *tabItem="{title: 'Profile'}" name="profileTab" actionBarVisibility="never">
+  </page-router-outlet>
+
+</TabView>

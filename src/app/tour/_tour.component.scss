@@ -1,0 +1,13 @@
+// Custom common variables
+@import '../../app-variables';
+
+.actionbar, .Tour--Wrapper {
+  background-color: $tour-background;
+}
+
+.heading {
+  margin-top:60;
+  color:white;
+  font-size:20;
+  font-weight:600
+}

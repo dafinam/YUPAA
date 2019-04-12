@@ -1,9 +1,13 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Home"></Label>
-</ActionBar>
+<GridLayout class="page page-content" rows="80 *">
+    <!-- THE ACTION/PAGE-TITLE BAR -->
+    <FlexboxLayout row="0" flexDirection="row" alignItems="center" justifyContent="space-between" class="action-bar-custom">
+        <StackLayout>
+            <Label class="title" text="Home"></Label>
+        </StackLayout>
+    </FlexboxLayout>
+    <!-- THE ACTION/PAGE-TITLE BAR -->
 
-<GridLayout class="page page-content">
-    <ListView [items]="items" class="list-group">
+    <ListView row="1" [items]="items" class="list-group">
         <ng-template let-item="item">
             <Label [nsRouterLink]="['../item', item.id]" [text]="item.name" class="list-group-item"></Label>
         </ng-template>

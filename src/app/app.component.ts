@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { isAndroid } from "tns-core-modules/platform";
 
 @Component({
     selector: "ns-app",
@@ -14,12 +13,6 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // Init your component properties here.
-    }
-
-    getIconSource(icon: string): string {
-        const iconPrefix = isAndroid ? "res://" : "res://tabIcons/";
-
-        return iconPrefix + icon;
+        // this.mainTabView.nativeElement.selectedIndex = 2; // Home tab should be default
     }
 }
