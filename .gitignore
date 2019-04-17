@@ -32,3 +32,7 @@ typings/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Google Authentication Files
+App_Resources/Android/google-services.json
+App_Resources/iOS/GoogleService-Info.plist
