@@ -47,5 +47,18 @@
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>dafmarku.Yupaa</string>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.1068585837522-7c3tdi2tb0ic0i17ncs6ql2rbctnujdr</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

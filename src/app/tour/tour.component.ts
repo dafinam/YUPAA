@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular";
-import { isAndroid } from "tns-core-modules/platform";
+import { UserService } from "../shared/services/user.service";
 
 @Component({
   selector: "Tour",
@@ -11,13 +11,21 @@ import { isAndroid } from "tns-core-modules/platform";
 export class TourComponent implements OnInit {
 
   constructor(
-    private router: RouterExtensions
+    private router: RouterExtensions,
+    private userService: UserService
   ) {
     // Use the component constructor to inject providers.
   }
 
   ngOnInit(): void {
-    // Init your component properties here.
+    this.userService.isUserLoggedIn().then(() => {
+      // TODO: Check if tour completed
+    }).catch((error: any) => {
+      this.router.navigate(["/login"], {
+        animated: true,
+        clearHistory: true
+      });
+    });
   }
 
   navigateHome(): void {
