@@ -72,4 +72,8 @@ export class UserService {
         });
     });
   }
+
+  completeTour(uid: string, nickname: string): void {
+    // TODO
+  }
 }

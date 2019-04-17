@@ -5,6 +5,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { TourComponent } from "./tour/tour.component";
 import { LoginComponent } from "./login/login.component";
+import { TourSlidesService } from "./tour/tour-slides.service";
+import { NativeScriptFormsModule } from "nativescript-angular";
 
 @NgModule({
     bootstrap: [
@@ -12,7 +14,11 @@ import { LoginComponent } from "./login/login.component";
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule
+        AppRoutingModule,
+        NativeScriptFormsModule
+    ],
+    providers: [
+        TourSlidesService
     ],
     declarations: [
         AppComponent,
