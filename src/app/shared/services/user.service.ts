@@ -43,12 +43,22 @@ export class UserService {
     return firebase.firestore
       .collection("users")
       .doc(user.googleUserUid)
-      .set(user.toDocEntries())
-      .then((docRef: any) => {
-        return Promise.resolve();
-      })
-      .catch((error: any) => {
-        throw new Error(error);
+      .get()
+      .then((userDoc: any) => {
+        if (userDoc.exists) {
+          return Promise.resolve();
+        } else {
+          return firebase.firestore
+            .collection("users")
+            .doc(user.googleUserUid)
+            .set(user.toDocEntries())
+            .then((docRef: any) => {
+              return Promise.resolve();
+            })
+            .catch((error: any) => {
+              throw new Error(error);
+            });
+        }
       });
   }
 
@@ -73,7 +83,21 @@ export class UserService {
     });
   }
 
-  completeTour(uid: string, nickname: string): void {
-    // TODO
+  completeTourForUser(user: User): Promise<boolean> {
+    return firebase.firestore
+    .collection("users")
+    .doc(user.googleUserUid)
+    .update({
+      completed_tour: true,
+      nickname: user.nickname
+    })
+    .then(() => {
+      return true;
+    })
+    .catch((error) => {
+      console.error("Failed updating the user ", error);
+
+      return false;
+    });
   }
 }

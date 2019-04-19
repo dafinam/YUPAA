@@ -11,6 +11,7 @@ import { screen, isAndroid, device } from "tns-core-modules/platform";
 import * as app from "tns-core-modules/application";
 import * as builder from "tns-core-modules/ui/builder";
 import { TourSlidesService } from "./tour-slides.service";
+import { User } from "../shared/models/user";
 
 declare var android: any;
 @Component({
@@ -58,20 +59,34 @@ export class TourComponent implements OnInit {
     this.page.cssClasses.add("welcome-page-background");
     this.page.backgroundSpanUnderStatusBar = true;
 
-    this.userService.isUserLoggedIn().then(() => {
-      this.loadSlides(this.slidesService.getSlides()).then((slides: any) => {
-        const row = new ItemSpec(1, GridUnitType.STAR);
-        const gridLayout = new GridLayout();
-        slides.forEach((element, i) => {
-          GridLayout.setColumn(element, 0);
-          if (i > 0) {
-            element.opacity = 0;
+    this.userService.isUserLoggedIn()
+    .then(() => {
+      // If it loogged in, check if tour is completed
+      this.userService.getFirestoreUser()
+      .then((loggedUser: User) => {
+        if (loggedUser !== undefined) {
+          const hasUserCompletedTour = loggedUser.completedTour;
+          if (hasUserCompletedTour) {
+            // Redirect to Home
+            this.navigateHome();
+          } else {
+            // This mean that the completed_tour prop is false
+            this.loadSlides(this.slidesService.getSlides()).then((slides: any) => {
+              const row = new ItemSpec(1, GridUnitType.STAR);
+              const gridLayout = new GridLayout();
+              slides.forEach((element, i) => {
+                GridLayout.setColumn(element, 0);
+                if (i > 0) {
+                  element.opacity = 0;
+                }
+                gridLayout.addChild(element);
+              });
+              gridLayout.addRow(row);
+              this.slideView = this.slideElement.nativeElement;
+              this.slideView.content = (this.slidesView = gridLayout);
+            });
           }
-          gridLayout.addChild(element);
-        });
-        gridLayout.addRow(row);
-        this.slideView = this.slideElement.nativeElement;
-        this.slideView.content = (this.slidesView = gridLayout);
+        }
       });
     }).catch((error: any) => {
       this.router.navigate(["/login"], {
@@ -145,7 +160,22 @@ export class TourComponent implements OnInit {
 
   completeTour(): void {
     // TODO: Complete the tour by updating the users nickname and changing the completed_tour flag to true
-    this.navigateHome();
+    this.userService.getUserUid()
+    .then((userId: string) => {
+      const user = new User({
+        uid: userId,
+        nickname: this.nickname
+      });
+      this.userService.completeTourForUser(user)
+        .then((successful: boolean) => {
+          if (successful) {
+            this.navigateHome();
+          } else {
+            // TODO: show a modal that informs the user about unsucessful update
+            // DO NOTHING
+          }
+        });
+    });
   }
 
   private loadSlides(slides) {
