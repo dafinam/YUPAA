@@ -1,14 +1,34 @@
 <GridLayout class="page page-content"rows="80 *">
   <!-- THE ACTION/PAGE-TITLE BAR -->
-  <FlexboxLayout row="0" flexDirection="row" alignItems="center" justifyContent="space-between" class="action-bar-custom">
+  <FlexboxLayout *ngIf="!isLoading" row="0" flexDirection="row" alignItems="center" justifyContent="space-between" class="action-bar-custom">
     <StackLayout>
       <Label class="title" text="Profile"></Label>
+    </StackLayout>
+    <StackLayout>
+      <Image src="~/assets/images/logout.png" class="logout-btn" (tap)="logOut()"></Image>
     </StackLayout>
   </FlexboxLayout>
   <!-- THE ACTION/PAGE-TITLE BAR -->
 
-  <StackLayout row="1">
-    <Label class="page-placeholder" text="<!-- This is the PROFILE page -->"></Label>
-    <Button class="btn btn-primary btn-active" text="Logout" (tap)="logOut()"></Button>
-  </StackLayout>
+  <!-- <StackLayout row="1">
+    
+  </StackLayout> -->
+  <ScrollView *ngIf="!isLoading" orientation="vertical" row="1">
+    <GridLayout rows="auto, auto, auto, auto,auto" columns="*">
+      <Image row="0" col="0" [src]="userImageUrl" stretch="aspectFill" class="profilePic"></Image>
+      <Label row="1" col="0" [text]="fullname" class="title-profile" textAlignment="center"></Label>
+
+      <GridLayout row="3" col="0" rows="auto,auto" columns="*,*,*" class="content-followers">
+        <Label row="0" col="0" text="6" class="followersTxtValue"></Label>
+        <Label row="1" col="0" text="Posts" class="followersTxt"></Label>
+  
+        <Label row="0" col="1" text="2300" class="followersTxtValue"></Label>
+        <Label row="1" col="1" text="Followers" class="followersTxt"></Label>
+  
+        <Label row="0" col="2" text="400" class="followersTxtValue"></Label>
+        <Label row="1" col="2" text="Following" class="followersTxt"></Label>
+      </GridLayout>
+    </GridLayout>
+  </ScrollView>
+  <Loading *ngIf="isLoading"></Loading>
 </GridLayout>

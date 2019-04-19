@@ -1,1 +1,70 @@
 @import '../app.component';
+
+/* Profile */
+.profilePic {
+    width: 150;
+    height: 150;
+    border-radius: 100;
+    margin: 32 32 16 32;
+    border-color: #4db8ff;
+    border-width: 1;
+}
+
+.title-profile {
+    color: #000;
+    font-size: 19;
+    font-weight: bold;
+}
+
+.listImage {
+    border-width: 1;
+    border-color: #fff;
+}
+
+.additional-info {
+    border-radius: 15;
+    background: #eeeeee;
+    padding: 18;
+    line-height: 18;
+    margin-top: 20;
+    width: 85%;
+}
+
+.icon-aditional-info {
+    font-size: 17;
+    color: #557AAD;
+    text-align: center;
+    padding-top: 2;
+}
+
+.description-aditional-info {
+    font-size: 17;
+    color:#000;
+    margin-left: 8;
+    border-width: 1;
+    border-color: transparent;
+}
+
+.content-followers {
+    padding: 8 0;
+}
+
+.content-photos {
+    background-color: #eeeeee;
+    margin-top: 10;
+}
+
+.followersTxt {
+    text-align: center;
+    font-size: 14;
+    height: 20;
+}
+
+.followersTxtValue {
+    text-align: center;
+    margin-top: 10;
+    height: 25;
+    font-size: 22;
+    font-weight: bold;
+    color: #000;
+}

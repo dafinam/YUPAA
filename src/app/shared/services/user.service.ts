@@ -24,6 +24,10 @@ export class UserService {
     );
   }
 
+  getGoogleUser(): Promise<any> {
+    return firebase.getCurrentUser();
+  }
+
   getUserUid(): Promise<string> {
     return firebase
       .getCurrentUser()
