@@ -23,6 +23,7 @@ declare var android: any;
 export class TourComponent implements OnInit {
   isTourActive: boolean = true;
   nickname: string = "";
+  isLoading: boolean = false;
   @ViewChild("slideContent") slideElement: ElementRef;
 
   private currentSlideNum: number = 0;
@@ -55,6 +56,7 @@ export class TourComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.page.actionBarHidden = true;
     this.page.cssClasses.add("welcome-page-background");
     this.page.backgroundSpanUnderStatusBar = true;
@@ -84,11 +86,13 @@ export class TourComponent implements OnInit {
               gridLayout.addRow(row);
               this.slideView = this.slideElement.nativeElement;
               this.slideView.content = (this.slidesView = gridLayout);
+              this.isLoading = false;
             });
           }
         }
       });
     }).catch((error: any) => {
+      this.isLoading = false;
       this.router.navigate(["/login"], {
         animated: true,
         clearHistory: true

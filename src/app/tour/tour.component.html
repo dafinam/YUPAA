@@ -1,5 +1,5 @@
 <GridLayout class="Tour--Wrapper" (swipe)="onSwipe($event)">
-  <GridLayout [ngClass]="isTourActive ? 'show': 'hide'" rows="10*, auto">
+  <GridLayout [ngClass]="isTourActive && !isLoading ? 'show': 'hide'" rows="10*, auto">
     <GridLayout row="0" rows="*" class="m-t-20">
       <ContentView #slideContent row="0" id="slide-content">
         <GridLayout row="0" rows="*">
@@ -17,7 +17,7 @@
     </GridLayout>
   </GridLayout>
 
-  <FlexboxLayout *ngIf="!isTourActive" flexDirection="column" alignItems="center" justifyContent="space-around"
+  <FlexboxLayout *ngIf="!isTourActive && !isLoading" flexDirection="column" alignItems="center" justifyContent="space-around"
     class="complete-tour-wrapper">
     <StackLayout></StackLayout>
     <StackLayout style="text-align: center">
@@ -35,4 +35,5 @@
       <Label text="Let's GO"></Label>
     </StackLayout>
   </FlexboxLayout>
+  <Loading *ngIf="isLoading"></Loading>
 </GridLayout>

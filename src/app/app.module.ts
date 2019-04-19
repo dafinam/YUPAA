@@ -7,6 +7,7 @@ import { TourComponent } from "./tour/tour.component";
 import { LoginComponent } from "./login/login.component";
 import { TourSlidesService } from "./tour/tour-slides.service";
 import { NativeScriptFormsModule } from "nativescript-angular";
+import { LoadingComponent } from "./custom-components/loading.component";
 
 @NgModule({
     bootstrap: [
@@ -23,7 +24,8 @@ import { NativeScriptFormsModule } from "nativescript-angular";
     declarations: [
         AppComponent,
         TourComponent,
-        LoginComponent
+        LoginComponent,
+        LoadingComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
