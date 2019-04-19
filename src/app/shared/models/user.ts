@@ -1,7 +1,7 @@
 export class User {
-  googleUserUid: string;
-  completedTour: boolean;
-  nickname: string;
+    googleUserUid: string;
+    completedTour: boolean;
+    nickname: string;
 
   constructor(options: any) {
     this.googleUserUid = options.uid || options.google_user_uid;

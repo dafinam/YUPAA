@@ -2,24 +2,24 @@ import { Injectable } from "@angular/core";
 import * as firebase from "nativescript-plugin-firebase";
 import DataFetchError from "../utils/datafetch.error";
 import { queryToModelOptions } from "../utils/conveniences";
-import { User } from "../models/User.model";
+import { User } from "./../models/user";
 
 @Injectable({
   providedIn: "root"
 })
 export class UserService {
   isUserLoggedIn(): Promise<boolean> {
-    return new Promise((resolve) =>
+    return new Promise((resolve, reject) =>
       firebase
         .getCurrentUser()
         .then((user) => {
           console.log("User uid: " + user.uid);
           console.log(user);
-          resolve(true);
+          resolve();
         })
         .catch((error) => {
           console.log("Trouble in paradise: " + error);
-          resolve(false);
+          reject();
         })
     );
   }
