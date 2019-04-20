@@ -6,7 +6,7 @@ import { TourComponent } from "./tour/tour.component";
 import { LoginComponent } from "./login/login.component";
 
 const routes: Routes = [
-    { path: "", redirectTo: "/login", pathMatch: "full" },
+    { path: "", redirectTo: "/tour", pathMatch: "full" },
     { path: "login", component: LoginComponent },
     { path: "tour", component: TourComponent },
     { path: "tabs", loadChildren: "~/app/tabs/tabs.module#TabsModule" }

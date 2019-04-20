@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { initFirebase } from "./shared/firebase.common";
 
 @Component({
     selector: "ns-app",
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit {
         // Use the component constructor to inject providers.
     }
 
-    ngOnInit(): void {
-        // this.mainTabView.nativeElement.selectedIndex = 2; // Home tab should be default
+    ngOnInit() {
+        initFirebase();
     }
 }

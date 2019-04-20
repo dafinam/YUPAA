@@ -1,0 +1,47 @@
+@import '../app.component';
+
+.google-icon {
+  width: 50;
+  height: 50;
+}
+
+.headers {
+  text-align: center;
+}
+
+.yupaa-header {
+  font-weight: bold;
+  font-size: 40;
+  color: $dazzeld-blue;
+  animation-name: fadeInDown;
+  animation-duration: 0.5;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.subtitle {
+  color: $platinum;
+  font-size: 13;
+  margin-top: 10;
+  animation-name: fadeInUp;
+  animation-duration: 0.5;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.signin-btn {
+  height: 70;
+  width: 80%;
+  border-radius: 6;
+  font-size: 16;
+  background-color: $light-grey;
+  font-weight: bold;
+  letter-spacing: 0.05;
+  vertical-align: middle;
+  opacity: 0;
+  animation-name: bounceInUp;
+  animation-duration: 0.5;
+  animation-delay: 1;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}

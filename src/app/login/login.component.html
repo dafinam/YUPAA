@@ -1,3 +1,12 @@
 <GridLayout class="page page-content">
-  <Button text="Go To Welcome Page" (tap)="onNavigateWelcome()"></Button>
+  <FlexboxLayout row="0" flexDirection="column" alignItems="center" justifyContent="space-around" class="action-bar-custom">
+    <StackLayout></StackLayout>
+    <StackLayout class="headers">
+      <Label class="yupaa-header" text="Yupaa"></Label>
+      <Label class="subtitle slideInUp" text="Sign in to continue"></Label>
+    </StackLayout>
+    <StackLayout class="signin-btn" (tap)="onGoogleLogin()">
+      <Image src="~/assets/images/google-logo.png" class="google-icon"></Image>
+    </StackLayout>
+  </FlexboxLayout>
 </GridLayout>
