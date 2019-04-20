@@ -1,5 +1,39 @@
-<FlexboxLayout class="Tour--Wrapper" flexDirection="column" alignItems="center" justifyContent="center">
-  <Label class="heading" text="YUPAA"></Label>
-  <Label class="heading" text="Together. Get Fit."></Label>
-  <Button class="btn btn-primary btn-active" text="Go To Tabs Page" [nsRouterLink]="['/tabs/default']"></Button>
-</FlexboxLayout>
+<GridLayout class="Tour--Wrapper" (swipe)="onSwipe($event)">
+  <GridLayout [ngClass]="isTourActive && !isLoading ? 'show': 'hide'" rows="10*, auto">
+    <GridLayout row="0" rows="*" class="m-t-20">
+      <ContentView #slideContent row="0" id="slide-content">
+        <GridLayout row="0" rows="*">
+          <Label class="opensans-semi-bold carousel-loading" text="Loading..." textWrap="true"></Label>
+        </GridLayout>
+      </ContentView>
+    </GridLayout>
+    <GridLayout row="2" rows="auto, auto" >
+      <FlexboxLayout height="50" row="0" flexDirection="row" alignItems="center" justifyContent="center">
+        <StackLayout [ngClass]="getSliderItemClass(0)"></StackLayout>
+        <StackLayout [ngClass]="getSliderItemClass(1)"></StackLayout>
+        <StackLayout [ngClass]="getSliderItemClass(2)"></StackLayout>
+        <StackLayout [ngClass]="getSliderItemClass(3)"></StackLayout>
+      </FlexboxLayout>
+    </GridLayout>
+  </GridLayout>
+
+  <FlexboxLayout *ngIf="!isTourActive && !isLoading" flexDirection="column" alignItems="center" justifyContent="space-around"
+    class="complete-tour-wrapper">
+    <StackLayout></StackLayout>
+    <StackLayout style="text-align: center">
+      <Label style="letter-spacing: 0.05;" text="Lets get started"></Label>
+      <Label text="What should we call you"></Label>
+      <FlexboxLayout class="input-container" padding="16" borderRadius="16" backgroundColor="#ffffff" width="300" alignItems="center"
+        justifyContent="center">
+        <TextField [(ngModel)]="nickname" class="nickname-input" editable="true" hint="Your Nickname" maxLength="10">
+        </TextField>
+        <Image *ngIf="nickname.length > 0" src="~/assets/images/cross-red.png" height="16" minWidth="12" margin="0 14" (tap)="nickname = ''">
+        </Image>
+      </FlexboxLayout>
+    </StackLayout>
+    <StackLayout class="tour-complete-btn" (tap)="completeTour()">
+      <Label text="Let's GO"></Label>
+    </StackLayout>
+  </FlexboxLayout>
+  <Loading *ngIf="isLoading"></Loading>
+</GridLayout>

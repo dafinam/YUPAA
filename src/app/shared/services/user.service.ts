@@ -2,26 +2,30 @@ import { Injectable } from "@angular/core";
 import * as firebase from "nativescript-plugin-firebase";
 import DataFetchError from "../utils/datafetch.error";
 import { queryToModelOptions } from "../utils/conveniences";
-import { User } from "../models/User.model";
+import { User } from "./../models/user";
 
 @Injectable({
   providedIn: "root"
 })
 export class UserService {
   isUserLoggedIn(): Promise<boolean> {
-    return new Promise((resolve) =>
+    return new Promise((resolve, reject) =>
       firebase
         .getCurrentUser()
         .then((user) => {
           console.log("User uid: " + user.uid);
           console.log(user);
-          resolve(true);
+          resolve();
         })
         .catch((error) => {
           console.log("Trouble in paradise: " + error);
-          resolve(false);
+          reject();
         })
     );
+  }
+
+  getGoogleUser(): Promise<any> {
+    return firebase.getCurrentUser();
   }
 
   getUserUid(): Promise<string> {
@@ -43,12 +47,22 @@ export class UserService {
     return firebase.firestore
       .collection("users")
       .doc(user.googleUserUid)
-      .set(user.toDocEntries())
-      .then((docRef: any) => {
-        return Promise.resolve();
-      })
-      .catch((error: any) => {
-        throw new Error(error);
+      .get()
+      .then((userDoc: any) => {
+        if (userDoc.exists) {
+          return Promise.resolve();
+        } else {
+          return firebase.firestore
+            .collection("users")
+            .doc(user.googleUserUid)
+            .set(user.toDocEntries())
+            .then((docRef: any) => {
+              return Promise.resolve();
+            })
+            .catch((error: any) => {
+              throw new Error(error);
+            });
+        }
       });
   }
 
@@ -70,6 +84,24 @@ export class UserService {
         .catch((error) => {
           throw new DataFetchError(error);
         });
+    });
+  }
+
+  completeTourForUser(user: User): Promise<boolean> {
+    return firebase.firestore
+    .collection("users")
+    .doc(user.googleUserUid)
+    .update({
+      completed_tour: true,
+      nickname: user.nickname
+    })
+    .then(() => {
+      return true;
+    })
+    .catch((error) => {
+      console.error("Failed updating the user ", error);
+
+      return false;
     });
   }
 }

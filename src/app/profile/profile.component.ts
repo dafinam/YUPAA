@@ -9,6 +9,9 @@ import { RouterExtensions } from "nativescript-angular";
   styleUrls: ["./profile.component.scss"]
 })
 export class ProfileComponent implements OnInit {
+  isLoading: boolean = false;
+  googleUser: any = {};
+  nickname: string = "";
   constructor(
     private userService: UserService,
     private router: RouterExtensions
@@ -17,7 +20,17 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Use the "ngOnInit" handler to initialize data for the view.
+    this.isLoading = true;
+
+    this.userService.getGoogleUser()
+    .then((user: any) => {
+      this.googleUser = user;
+      this.isLoading = false;
+    })
+    .catch((error: any) => {
+      // TODO: better way of handling errors
+      this.isLoading = false;
+    });
   }
 
   logOut() {
@@ -29,5 +42,13 @@ export class ProfileComponent implements OnInit {
       });
     })
     .catch((err: any) => console.error("======= Logout error!", err));
+  }
+
+  get userImageUrl(): string {
+    return this.googleUser.photoURL;
+  }
+
+  get fullname(): string {
+    return this.googleUser.displayName;
   }
 }

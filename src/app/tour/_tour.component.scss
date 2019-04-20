@@ -1,13 +1,59 @@
 // Custom common variables
 @import '../../app-variables';
 
-.actionbar, .Tour--Wrapper {
-  background-color: $tour-background;
-}
-
 .heading {
   margin-top:60;
   color:white;
   font-size:20;
   font-weight:600
+}
+
+.caro-item-dot {
+  background: $platinum;
+  border-radius: 6;
+  height: 12;
+  width: 12;
+  margin-left: 10;
+}
+
+.caro-item-dot-selected {
+  background: $dazzeld-blue;
+}
+
+.nickname-input {
+  background-color: #ffffff;
+  height: 60;
+  text-decoration: none;
+  font-size: 30;
+  text-align: center;
+  width: 300;
+  flex-grow: 2;
+}
+
+.tour-complete-btn {
+  height: 70;
+  width: 80%;
+  border-radius: 6;
+  font-size: 16;
+  text-align: center;
+  background-color: #F2F3F2;
+  font-weight: bold;
+  letter-spacing: 0.05;
+  vertical-align: middle;
+}
+
+.complete-tour-wrapper {
+  opacity: 0;
+  animation-name: bounceInRight;
+  animation-duration: 0.5;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.hide {
+  visibility: collapse;
+}
+
+.show {
+  visibility: visible;
 }

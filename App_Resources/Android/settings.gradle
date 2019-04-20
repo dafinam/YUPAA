@@ -28,6 +28,10 @@ task replaceSettings {
                 if (__targetSdkVersion__) {
                     targetSdkVersion = __targetSdkVersion__
                 }
+
+                if(__multiDexEnabled__) {
+                    multiDexEnabled = __multiDexEnabled__
+                }
             }
         }"""
 
