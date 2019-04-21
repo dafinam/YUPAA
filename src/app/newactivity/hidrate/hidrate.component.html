@@ -10,35 +10,35 @@
   </GridLayout>
   <FlexboxLayout row="3" flexDirection="column" alignItems="flex-start" justifyContent="space-around" class="Config-Wrapper">
     <StackLayout>
-      <TimePickerField class="time" [(ngModel)]="wakupTime" pickerOkText="Pick Time" pickerDefaultTime="08:00"
+      <TimePickerField class="time" [(ngModel)]="wakupTime" hint="Pick time" pickerOkText="Pick Time" pickerDefaultTime="08:00"
         timeFormat="HH:mm">
       </TimePickerField>
       <StackLayout class="hr-light m-10" android:visibility="collapse"></StackLayout>
       <Label class="caption" text="Wakup Time"></Label>
     </StackLayout>
     <StackLayout>
-      <TimePickerField class="time" [(ngModel)]="lunchTime" pickerOkText="Pick Time" pickerDefaultTime="11:00"
+      <TimePickerField class="time" [(ngModel)]="lunchTime" hint="Pick time" pickerOkText="Pick Time" pickerDefaultTime="11:00"
         timeFormat="HH:mm">
       </TimePickerField>
       <StackLayout class="hr-light m-10" android:visibility="collapse"></StackLayout>
       <Label class="caption" text="Lunch Time"></Label>
     </StackLayout>
     <StackLayout>
-      <TimePickerField class="time" [(ngModel)]="dinnerTime" pickerOkText="Pick Time" pickerDefaultTime="17:00"
+      <TimePickerField class="time" [(ngModel)]="dinnerTime" hint="Pick time" pickerOkText="Pick Time" pickerDefaultTime="17:00"
         timeFormat="HH:mm">
       </TimePickerField>
       <StackLayout class="hr-light m-10" android:visibility="collapse"></StackLayout>
       <Label class="caption" text="Dinner Time"></Label>
     </StackLayout>
     <StackLayout>
-      <TimePickerField class="time" [(ngModel)]="sleepTime" pickerOkText="Pick Time" pickerDefaultTime="23:00"
+      <TimePickerField class="time" [(ngModel)]="sleepTime" hint="Pick time" pickerOkText="Pick Time" pickerDefaultTime="23:00"
         timeFormat="HH:mm">
       </TimePickerField>
       <StackLayout class="hr-light m-10" android:visibility="collapse"></StackLayout>
       <Label class="caption" text="Sleep Time"></Label>
     </StackLayout>
     <StackLayout class="Button-Wrapper">
-      <Button text="Ready to start!" textTransform="none"></Button>
+      <Button [class]="isSubmitting ? 'disabled' : ''" text="Ready to start!" [isEnabled]="!isSubmitting" textTransform="none" (tap)="registerActivity()"></Button>
     </StackLayout>
   </FlexboxLayout>
 </GridLayout>

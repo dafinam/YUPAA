@@ -62,6 +62,7 @@ export class HomeComponent implements OnInit {
     /* First of check if user has any activities subscribed */
     if (this.loggedUser.activities && this.loggedUser.activities.length > 0) {
       // TODO: Fetch all activities and list them on the home page
+      this.isLoading = false;
     } else {
       /* User has not subscribed for any Yupaa Activities, Goals .... */
       this.isLoading = false;
