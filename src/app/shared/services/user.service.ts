@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import * as firebase from "nativescript-plugin-firebase";
 import DataFetchError from "../utils/datafetch.error";
 import { queryToModelOptions } from "../utils/conveniences";
-import { User } from "./../models/user";
+import { User, IUserActivity } from "./../models/user";
 
 @Injectable({
   providedIn: "root"
@@ -99,6 +99,29 @@ export class UserService {
       console.error("Failed updating the user ", error);
 
       return false;
+    });
+  }
+
+  addUserActivity(newActivity: IUserActivity): Promise<boolean> {
+    return this.getFirestoreUser()
+      .then((user: User) => {
+        const updatedActivities = user.activities || [];
+        updatedActivities.push(newActivity);
+
+        return firebase.firestore
+        .collection("users")
+        .doc(user.googleUserUid)
+        .update({
+          activities: updatedActivities
+        })
+        .then(() => {
+          return true;
+        })
+        .catch((error) => {
+          console.error("Failed updating the user ", error);
+
+          return false;
+        });
     });
   }
 }

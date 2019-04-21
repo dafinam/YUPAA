@@ -6,6 +6,7 @@
     font-size: 18;
     font-weight: 700;
     letter-spacing: 0.03;
+    color: $ocean-blue;
   }
 
   Image {
@@ -25,7 +26,7 @@
     margin-left: -5;
   }
   Label {
-    color: $platinum;
+    color: $quick-silver;
     font-size: 14;
     text-align: justify;
   }
@@ -39,7 +40,7 @@
   }
 
   .caption {
-    color: $platinum;
+    color: $quick-silver;
     font-size: 14;
   }
 
@@ -49,7 +50,11 @@
       width: 100%;
       height: 50;
       color: white;
-      background-color: $dazzeld-blue;
+      background-color: $ocean-blue;
+    }
+
+    .disabled  {
+      opacity: 0.4;
     }
   }
 }

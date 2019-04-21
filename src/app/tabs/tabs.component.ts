@@ -29,7 +29,7 @@ export class TabsComponent implements OnInit {
       }],
       { relativeTo: this.activeRoute }
     );
-    this.mainTabView.nativeElement.selectedIndex = 2; // Home tab should be default
+    this.mainTabView.nativeElement.selectedIndex = 0; // Home tab should be default
   }
 
   getIconSource(icon: string): string {
