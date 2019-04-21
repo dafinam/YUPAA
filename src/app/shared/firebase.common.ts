@@ -23,8 +23,5 @@ export function initFirebase() {
       //   }
       // },
     })
-    .then(
-      (instance) => console.log("firebase.init done"),
-      (error) => console.log("firebase.init error: " + error)
-    );
+    .catch((error: any) => console.error("firebase.init error: " + error));
 }

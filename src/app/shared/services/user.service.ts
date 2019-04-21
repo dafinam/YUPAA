@@ -8,17 +8,14 @@ import { User } from "./../models/user";
   providedIn: "root"
 })
 export class UserService {
-  isUserLoggedIn(): Promise<boolean> {
+  isUserLoggedIn(): Promise<any> {
     return new Promise((resolve, reject) =>
       firebase
         .getCurrentUser()
-        .then((user) => {
-          console.log("User uid: " + user.uid);
-          console.log(user);
+        .then(() => {
           resolve();
         })
         .catch((error) => {
-          console.log("Trouble in paradise: " + error);
           reject();
         })
     );

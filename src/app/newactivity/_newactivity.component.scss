@@ -1,1 +1,24 @@
 @import '../app.component';
+
+.NewActivityCard {
+  background-size:cover;
+  width: 165;
+  height: 145;
+  background-color: red;
+  margin-left: 15;
+  margin-bottom: 10;
+  border-radius: 12;
+
+  Label {
+    font-size: 15;
+    font-weight: 800;
+    color: white;
+    margin-top: 10;
+    margin-left: 10;
+    letter-spacing: 0.02;
+  }
+  Image {
+    margin-bottom: 10;
+    margin-left: 10;
+  }
+}

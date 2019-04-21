@@ -8,6 +8,8 @@ import { LoginComponent } from "./login/login.component";
 import { TourSlidesService } from "./tour/tour-slides.service";
 import { NativeScriptFormsModule } from "nativescript-angular";
 import { LoadingComponent } from "./custom-components/loading.component";
+import { HidrateComponent } from "./newactivity/hidrate/hidrate.component";
+import { NativeScriptDateTimePickerModule } from "nativescript-datetimepicker/angular";
 
 @NgModule({
     bootstrap: [
@@ -16,7 +18,8 @@ import { LoadingComponent } from "./custom-components/loading.component";
     imports: [
         NativeScriptModule,
         AppRoutingModule,
-        NativeScriptFormsModule
+        NativeScriptFormsModule,
+        NativeScriptDateTimePickerModule
     ],
     providers: [
         TourSlidesService
@@ -25,7 +28,8 @@ import { LoadingComponent } from "./custom-components/loading.component";
         AppComponent,
         TourComponent,
         LoginComponent,
-        LoadingComponent
+        LoadingComponent,
+        HidrateComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

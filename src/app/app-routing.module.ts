@@ -4,12 +4,14 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { TourComponent } from "./tour/tour.component";
 import { LoginComponent } from "./login/login.component";
+import { HidrateComponent } from "./newactivity/hidrate/hidrate.component";
 
 const routes: Routes = [
-    { path: "", redirectTo: "/tour", pathMatch: "full" },
+    { path: "", redirectTo: "/tabs/default", pathMatch: "full" },
     { path: "login", component: LoginComponent },
     { path: "tour", component: TourComponent },
-    { path: "tabs", loadChildren: "~/app/tabs/tabs.module#TabsModule" }
+    { path: "tabs", loadChildren: "~/app/tabs/tabs.module#TabsModule" },
+    { path: "hidrate", component: HidrateComponent }
 ];
 
 @NgModule({

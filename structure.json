@@ -3,7 +3,17 @@
     {
       "id": "sajkhfdjdlksafhgfjdls",
       "completed_tour": false,
-      "nickname": "Jimmy" 
+      "nickname": "Jimmy",
+      "subscriptions": [
+        {
+          "name": "yupaa_hidrate",
+          "status": "active"
+        },
+        {
+          "name": "yupaa_gym",
+          "status": "paused"
+        }
+      ]
     }
   ],
   "yupaa_hidrate": [
