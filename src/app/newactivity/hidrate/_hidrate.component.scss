@@ -1,0 +1,55 @@
+@import '../../app.component';
+
+.title-wrapper {
+
+  Label {
+    font-size: 18;
+    font-weight: 700;
+    letter-spacing: 0.03;
+  }
+
+  Image {
+    opacity: 0.5;
+    margin-right: 15;
+    margin-top: -5;
+  }
+}
+
+.Info-Wrapper {
+  padding: 15;
+  border-width: 0 0 1 0;
+  border-color: $platinum;
+
+  Image {
+    opacity: 0.5;
+    margin-left: -5;
+  }
+  Label {
+    color: $platinum;
+    font-size: 14;
+    text-align: justify;
+  }
+}
+
+.Config-Wrapper {
+  padding: 15;
+
+  .time {
+    width: 95%;
+  }
+
+  .caption {
+    color: $platinum;
+    font-size: 14;
+  }
+
+  .Button-Wrapper {
+    text-align: center;
+    Button {
+      width: 100%;
+      height: 50;
+      color: white;
+      background-color: $dazzeld-blue;
+    }
+  }
+}

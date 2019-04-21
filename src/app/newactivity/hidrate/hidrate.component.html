@@ -1,0 +1,44 @@
+<GridLayout class="page page-content" rows="80, 100 *">
+  <FlexboxLayout row="0" flexDirection="row" alignItems="center" justifyContent="space-between" class="title-wrapper">
+    <StackLayout></StackLayout>
+    <Label class="title" text="Setup Yupaa Hidrate"></Label>
+    <Image class="close-btn" src="~/assets/images/icons/close-button.png" width="20" (tap)="goBack()"></Image>
+  </FlexboxLayout>
+  <GridLayout row="1" rows="*" columns="30, *" class="Info-Wrapper">
+    <Image row="0" col="0" src="~/assets/images/icons/warning.png" width="20"></Image>
+    <Label row="0" col="1" class="title" text="Yuppa hidrate helps you create a routine of drinking water by sending you notification during different times of the day until you reach the desired amount of water during a day." textWrap="true"></Label>
+  </GridLayout>
+  <FlexboxLayout row="3" flexDirection="column" alignItems="flex-start" justifyContent="space-around" class="Config-Wrapper">
+    <StackLayout>
+      <TimePickerField class="time" [(ngModel)]="wakupTime" pickerOkText="Pick Time" pickerDefaultTime="08:00"
+        timeFormat="HH:mm">
+      </TimePickerField>
+      <StackLayout class="hr-light m-10" android:visibility="collapse"></StackLayout>
+      <Label class="caption" text="Wakup Time"></Label>
+    </StackLayout>
+    <StackLayout>
+      <TimePickerField class="time" [(ngModel)]="lunchTime" pickerOkText="Pick Time" pickerDefaultTime="11:00"
+        timeFormat="HH:mm">
+      </TimePickerField>
+      <StackLayout class="hr-light m-10" android:visibility="collapse"></StackLayout>
+      <Label class="caption" text="Lunch Time"></Label>
+    </StackLayout>
+    <StackLayout>
+      <TimePickerField class="time" [(ngModel)]="dinnerTime" pickerOkText="Pick Time" pickerDefaultTime="17:00"
+        timeFormat="HH:mm">
+      </TimePickerField>
+      <StackLayout class="hr-light m-10" android:visibility="collapse"></StackLayout>
+      <Label class="caption" text="Dinner Time"></Label>
+    </StackLayout>
+    <StackLayout>
+      <TimePickerField class="time" [(ngModel)]="sleepTime" pickerOkText="Pick Time" pickerDefaultTime="23:00"
+        timeFormat="HH:mm">
+      </TimePickerField>
+      <StackLayout class="hr-light m-10" android:visibility="collapse"></StackLayout>
+      <Label class="caption" text="Sleep Time"></Label>
+    </StackLayout>
+    <StackLayout class="Button-Wrapper">
+      <Button text="Ready to start!" textTransform="none"></Button>
+    </StackLayout>
+  </FlexboxLayout>
+</GridLayout>

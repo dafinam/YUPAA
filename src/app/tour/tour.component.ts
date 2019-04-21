@@ -23,7 +23,6 @@ declare var android: any;
 export class TourComponent implements OnInit {
   isTourActive: boolean = true;
   nickname: string = "";
-  isLoading: boolean = false;
   @ViewChild("slideContent") slideElement: ElementRef;
 
   private currentSlideNum: number = 0;
@@ -56,47 +55,23 @@ export class TourComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isLoading = true;
     this.page.actionBarHidden = true;
     this.page.cssClasses.add("welcome-page-background");
     this.page.backgroundSpanUnderStatusBar = true;
 
-    this.userService.isUserLoggedIn()
-    .then(() => {
-      // If it loogged in, check if tour is completed
-      this.userService.getFirestoreUser()
-      .then((loggedUser: User) => {
-        if (loggedUser !== undefined) {
-          const hasUserCompletedTour = loggedUser.completedTour;
-          if (hasUserCompletedTour) {
-            // Redirect to Home
-            this.navigateHome();
-          } else {
-            // This mean that the completed_tour prop is false
-            this.loadSlides(this.slidesService.getSlides()).then((slides: any) => {
-              const row = new ItemSpec(1, GridUnitType.STAR);
-              const gridLayout = new GridLayout();
-              slides.forEach((element, i) => {
-                GridLayout.setColumn(element, 0);
-                if (i > 0) {
-                  element.opacity = 0;
-                }
-                gridLayout.addChild(element);
-              });
-              gridLayout.addRow(row);
-              this.slideView = this.slideElement.nativeElement;
-              this.slideView.content = (this.slidesView = gridLayout);
-              this.isLoading = false;
-            });
-          }
+    this.loadSlides(this.slidesService.getSlides()).then((slides: any) => {
+      const row = new ItemSpec(1, GridUnitType.STAR);
+      const gridLayout = new GridLayout();
+      slides.forEach((element, i) => {
+        GridLayout.setColumn(element, 0);
+        if (i > 0) {
+          element.opacity = 0;
         }
+        gridLayout.addChild(element);
       });
-    }).catch((error: any) => {
-      this.isLoading = false;
-      this.router.navigate(["/login"], {
-        animated: true,
-        clearHistory: true
-      });
+      gridLayout.addRow(row);
+      this.slideView = this.slideElement.nativeElement;
+      this.slideView.content = (this.slidesView = gridLayout);
     });
   }
 

@@ -1,15 +1,18 @@
 <GridLayout class="page page-content" rows="80 *">
-    <!-- THE ACTION/PAGE-TITLE BAR -->
-    <FlexboxLayout row="0" flexDirection="row" alignItems="center" justifyContent="space-between" class="action-bar-custom">
-        <StackLayout>
-            <Label class="title" text="Home"></Label>
-        </StackLayout>
-    </FlexboxLayout>
-    <!-- THE ACTION/PAGE-TITLE BAR -->
-
-    <ListView row="1" [items]="items" class="list-group">
-        <ng-template let-item="item">
-            <Label [nsRouterLink]="['../item', item.id]" [text]="item.name" class="list-group-item"></Label>
-        </ng-template>
-    </ListView>
+  <!-- THE ACTION/PAGE-TITLE BAR -->
+  <FlexboxLayout *ngIf="!isLoading" row="0" flexDirection="row" alignItems="center" justifyContent="space-between"
+    class="action-bar-custom">
+    <StackLayout>
+      <Label class="title" text="Home"></Label>
+    </StackLayout>
+  </FlexboxLayout>
+  <!-- THE ACTION/PAGE-TITLE BAR -->
+  <FlexboxLayout class="NoActivity" *ngIf="!isLoading && noActivities" row="1" flexDirection="column" alignItems="center" justifyContent="space-between">
+    <Image class="NoActivity--Image" src="~/assets/images/icons/goal.png"></Image>
+    <StackLayout class="NoActivity--TextWrapper">
+      <Label [text]="loggedUser.nickname + ', you dont have any activities yet'"></Label>
+      <Label text="Start a new activity/goal"></Label>
+      <Image src="~/assets/images/icons/down-arrow.png" width="30"></Image>
+    </StackLayout>
+  </FlexboxLayout>
 </GridLayout>

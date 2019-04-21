@@ -1,5 +1,5 @@
 <GridLayout class="Tour--Wrapper" (swipe)="onSwipe($event)">
-  <GridLayout [ngClass]="isTourActive && !isLoading ? 'show': 'hide'" rows="10*, auto">
+  <GridLayout [ngClass]="isTourActive ? 'show': 'hide'" rows="10*, auto">
     <GridLayout row="0" rows="*" class="m-t-20">
       <ContentView #slideContent row="0" id="slide-content">
         <GridLayout row="0" rows="*">
@@ -17,7 +17,7 @@
     </GridLayout>
   </GridLayout>
 
-  <FlexboxLayout *ngIf="!isTourActive && !isLoading" flexDirection="column" alignItems="center" justifyContent="space-around"
+  <FlexboxLayout *ngIf="!isTourActive" flexDirection="column" alignItems="center" justifyContent="space-around"
     class="complete-tour-wrapper">
     <StackLayout></StackLayout>
     <StackLayout style="text-align: center">
@@ -27,7 +27,7 @@
         justifyContent="center">
         <TextField [(ngModel)]="nickname" class="nickname-input" editable="true" hint="Your Nickname" maxLength="10">
         </TextField>
-        <Image *ngIf="nickname.length > 0" src="~/assets/images/cross-red.png" height="16" minWidth="12" margin="0 14" (tap)="nickname = ''">
+        <Image *ngIf="nickname.length > 0" src="~/assets/images/icons/cross-red.png" height="16" minWidth="12" margin="0 14" (tap)="nickname = ''">
         </Image>
       </FlexboxLayout>
     </StackLayout>
@@ -35,5 +35,4 @@
       <Label text="Let's GO"></Label>
     </StackLayout>
   </FlexboxLayout>
-  <Loading *ngIf="isLoading"></Loading>
 </GridLayout>
