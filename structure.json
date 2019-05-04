@@ -43,65 +43,148 @@
       ]
     }
   ],
-  "yupaa_breakfast": [
+  // "yupaa_breakfast": [
+  //   {
+  //     "id": "jfkhbdkfldsafghbfjalskd",
+  //     "user_id": "fdskljkghdkdls;afjgh",
+  //     "time": "0715",
+  //     "activated": true,
+  //     "reminders": [
+  //       "monday",
+  //       "wednesday",
+  //       "friday",
+  //       "saturday",
+  //       "sunday"
+  //     ],
+  //     "shopping_day": "monday",
+  //     "shopping_time": "1500",
+  //     "breakfast_id": "fsdfdgfdasfgdasdf",
+  //     "logs": [
+  //       "05/06/19",
+  //       "06/06/19",
+  //       "07/06/19"
+  //     ]
+  //   }
+  // ],
+  "yupaa_goals": [
     {
-      "id": "jfkhbdkfldsafghbfjalskd",
-      "user_id": "fdskljkghdkdls;afjgh",
-      "time": "0715",
-      "activated": true,
-      "reminders": [
-        "monday",
-        "wednesday",
-        "friday",
-        "saturday",
-        "sunday"
-      ],
-      "shopping_day": "monday",
-      "shopping_time": "1500",
-      "breakfast_id": "fsdfdgfdasfgdasdf",
-      "logs": [
-        "05/06/19",
-        "06/06/19",
-        "07/06/19"
+      "jasjfhkjshfkshkfjsd": [ // user id
+        {
+          "name": "Save money to buy a skateboard",
+          "deadline": "01/08/2019",
+          "completed": false,
+          "goalAchived": false
+        },
+        {
+          "name": "Finish bachelor thesis report",
+          "deadline": "01/06/2019",
+          "completed": false,
+          "goalAchived": false
+        }
       ]
     }
   ],
-  "yupaa_stretching": [
+  "yupaa_activities": [
+    {
+      "fkfjhdgkl;gslfdhjlkfdsgl": [
+        {
+          "activity_name": "Hidrate",
+          "times": [
+            "0700",
+            "1030",
+            ""
+          ],
+          "duration": undefined,
+          "activated": true,
+          "is_private": true, // If false, the activity will show up on the social circle "Brikend Rama started YUPAA Stretching"
+          "share_activity": true,
+          "reminders": [
+            "monday",
+            "tuesday"
+          ],
+          "logs": [
+            {
+              "date": "05/06/19",
+              "times": [
+                "0730"
+              ]
+            }
+          ]
+        }
+      ]
+    },
     {
       "id": "ljkfhjldafsgkldasfgjk",
       "user_id": "fkfjhdgkl;gslfdhjlkfdsgl",
-      "time": "1230",
-      "duration": 120,
+      "activity_name": "Healthy Breakfast",
+      "times": ["0730"],
+      "duration": 0,
       "activated": true,
       "is_private": true, // If false, the activity will show up on the social circle "Brikend Rama started YUPAA Stretching"
+      "share_activity": true,
+      "reminders": [
+        "monday",
+        "tuesday"
+      ],
       "logs": [
-        "05/06/19",
-        "07/06/19",
-        "08/06/19"
+        {
+          "date": "05/06/19",
+          "times": [
+            "0730"
+          ]
+        }
       ]
-    }
-  ],
-  "yupaa_posture": [
+    },
     {
       "id": "ljkfhjldafsgkldasfgjk",
       "user_id": "fkfjhdgkl;gslfdhjlkfdsgl",
-      "time": "1530",
+      "activity_name": "Stretching",
+      "times": ["1230"],
+      "duration": 3, //minutes
+      "activated": true,
+      "is_private": true, // If false, the activity will show up on the social circle "Brikend Rama started YUPAA Stretching"
+      "share_activity": true,
+      "reminders": [
+        "monday",
+        "tuesday"
+      ],
+      "logs": [
+        {
+          "date": "05/06/19",
+          "times": [
+            "0730"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ljkfhjldafsgkldasfgjk",
+      "user_id": "fkfjhdgkl;gslfdhjlkfdsgl",
+      "activity_name": "Posture",
+      "times": ["1530"],
+      "duration": 5, // minutes
       "activated": true,
       "is_private": true,
-      "duration": 300,
+      "share_activity": true,
+      "reminders": [
+        "monday",
+        "tuesday"
+      ],
       "logs": [
-        "05/06/19",
-        "07/06/19",
-        "08/06/19"
+        {
+          "date": "05/06/19",
+          "times": [
+            "0730"
+          ]
+        }
       ]
-    }
-  ],
-  "yupaa_others": [
+    },
     {
       "id": "dakljskfhjlkdasfkhlkasd",
       "user_id": "dfjkgnladsjkbnldskb",
       "activity_name": "Drink tea",
-      "time": "1200",
+      "times": ["1200"],
+      "duration": 0,
       "activated": true,
       "is_private": true,
       "share_activity": true, // IF true, other users from your circle can start this activity with the same configuration (frequency, time, name)
@@ -109,13 +192,22 @@
         "friday",
         "saturday",
         "sunday"
+      ],
+      "logs": [
+        {
+          "date": "05/06/19",
+          "times": [
+            "0730"
+          ]
+        }
       ]
     },
     {
       "id": "dakljskfhjlkdasfkhlkasd",
       "user_id": "dfjkgnladsjkbnldskb",
       "activity_name": "Reading",
-      "time": "1900",
+      "time": ["1900"],
+      "duration": 30, // minutes
       "activated": false,
       "is_private": true,
       "share_activity": true, // IF true, other users from your circle can start this activity with the same configuration (frequency, time, name)
@@ -123,6 +215,37 @@
         "friday",
         "saturday",
         "sunday"
+      ],
+      "logs": [
+        {
+          "date": "05/06/19",
+          "times": [
+            "0730"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dakljskfhjlkdasfkhlkasd",
+      "user_id": "dfjkgnladsjkbnldskb",
+      "activity_name": "Go for a walk",
+      "times": ["1800"],
+      "duration": 30, // minutes
+      "activated": false,
+      "is_private": true,
+      "share_activity": true, // IF true, other users from your circle can start this activity with the same configuration (frequency, time, name)
+      "reminders": [
+        "friday",
+        "saturday",
+        "sunday"
+      ],
+      "logs": [
+        {
+          "date": "05/06/19",
+          "times": [
+            "0730"
+          ]
+        }
       ]
     }
   ],

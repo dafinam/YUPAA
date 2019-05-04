@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { TimePicker } from "tns-core-modules/ui/time-picker";
 import { RouterExtensions } from "nativescript-angular";
-import { HidrateService } from "~/app/shared/services/hidrate.service";
-import { Hidrate } from "~/app/shared/models/hidrate";
 import { UserService } from "~/app/shared/services/user.service";
+import { ActivityService } from "~/app/shared/services/activity.service";
+import { Activity } from "~/app/shared/models/activity";
+import { appendZeroPrefix } from "~/app/shared/utils/conveniences"
 
 @Component({
   moduleId: module.id,
@@ -20,7 +20,7 @@ export class HidrateComponent implements OnInit {
 
   constructor(
     private router: RouterExtensions,
-    private hidrateActivityService: HidrateService,
+    private activityService: ActivityService,
     private userService: UserService
   ) {
   }
@@ -64,44 +64,55 @@ export class HidrateComponent implements OnInit {
   }
 
   registerActivity(): void {
-    this.isSubmitting = true;
-    const wakeupTime: string = this.appendZeroPrefix(
-      this.wakupTime.getHours()) + this.appendZeroPrefix(this.wakupTime.getMinutes());
-    const lunchTime: string = this.appendZeroPrefix(
-      this.lunchTime.getHours()) + this.appendZeroPrefix(this.lunchTime.getMinutes());
-    const dinnerTime: string = this.appendZeroPrefix(
-      this.dinnerTime.getHours()) + this.appendZeroPrefix(this.dinnerTime.getMinutes());
-    const sleepTime: string = this.appendZeroPrefix(
-      this.sleepTime.getHours()) + this.appendZeroPrefix(this.sleepTime.getMinutes());
+    this.isSubmitting = true; 
+    const wakeupTime: string = appendZeroPrefix(
+      this.wakupTime.getHours()) + appendZeroPrefix(this.wakupTime.getMinutes());
+    
+    const beforeLunch = new Date(this.lunchTime.getTime());
+    beforeLunch.setMinutes(beforeLunch.getMinutes() - 30); // 30 Minutes Before Lunch
+    const beforeLunchTime: string = appendZeroPrefix(
+      beforeLunch.getHours()) + appendZeroPrefix(beforeLunch.getMinutes());
+
+    const afterLunch = new Date(this.lunchTime.getTime());
+    afterLunch.setMinutes(afterLunch.getMinutes() + 30);
+    const afterLunchTime: string = appendZeroPrefix(
+      afterLunch.getHours()) + appendZeroPrefix(afterLunch.getMinutes());
+
+    const dinnerTime: string = appendZeroPrefix(
+      this.dinnerTime.getHours()) + appendZeroPrefix(this.dinnerTime.getMinutes());
+
+    const sleepTime: string = appendZeroPrefix(
+      this.sleepTime.getHours()) + appendZeroPrefix(this.sleepTime.getMinutes());
+
     this.userService.getUserUid().then((userId) => {
-      const hidrateActivity: Hidrate = new Hidrate({
+      const hidrateActivity: Activity = new Activity({
         user_id: userId,
-        wakeup_time: wakeupTime,
-        lunch_time: lunchTime,
-        dinner_time: dinnerTime,
-        sleep_time: sleepTime,
-        logs: []
+        activity_name: "yupaa_hidrate",
+        times: [
+          wakeupTime,
+          beforeLunchTime,
+          afterLunchTime,
+          dinnerTime,
+          sleepTime
+        ],
+        reminders: ["mon", "tue", "wed", "thur", "fri", "sat", "sun"]
       });
-      this.hidrateActivityService.addEntry(hidrateActivity)
+      this.activityService.addActivity(hidrateActivity)
         .then(() => this.userService.addUserActivity({ name: "yupaa_hidrate", status: "active"}))
-      .then(() => {
-        this.router.navigate(["/tabs/default"], {
-          animated: true,
-          transition: {
-            curve: "linear",
-            duration: 300,
-            name: "slideDown"
-          },
-          clearHistory: true
+        .then(() => {
+          this.router.navigate(["/tabs/default"], {
+            animated: true,
+            transition: {
+              curve: "linear",
+              duration: 300,
+              name: "slideDown"
+            },
+            clearHistory: true
+          });
         });
-      });
     }).catch((err: any) => {
       this.isSubmitting = false;
       console.error(err);
     });
-  }
-
-  appendZeroPrefix(time: number): string {
-    return time < 10 ? `0${time}` : time.toString();
   }
 }
