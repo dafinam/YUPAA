@@ -8,6 +8,33 @@
   </FlexboxLayout>
   <!-- THE ACTION/PAGE-TITLE BAR -->
 
+  <ScrollView orientation="vertical" row="1">
+    <StackLayout class="Activity--Wrapper">
+      <StackLayout>
+        <Label class="Day-h1" text="Today"></Label>
+        <Button width="30" height="5" class="hr"></Button>
+      </StackLayout>
+      
+      <!-- A time of the day -->
+      <StackLayout *ngFor="let militaryTime of timeBasedActivityKeys">
+        <FlexboxLayout class="Time--Wrapper" flexDirection="row" alignItems="center" justifyContent="flex-start">
+          <Image src="~/assets/images/icons/clock.png" width="15"></Image>
+          <Label [text]="militaryToDisplayTime(militaryTime)"></Label>
+        </FlexboxLayout>
+        <StackLayout class="Activity--List">
+          <GridLayout *ngFor="let activity of timeBasedActivities[militaryTime]" class="Activity--Item--Wrapper" columns="50, *">
+            <FlexboxLayout class="Activity--Item" flexDirection="row" alignItems="center" justifyContent="space-between" col="1" backgroundColor="#2274A5">
+              <Label [text]="formatActivityName(activity.activityName)"></Label>
+              <Image [src]="getActivityCompleteImage(activity)" width="25"></Image>
+            </FlexboxLayout>
+          </GridLayout>
+        </StackLayout>
+      </StackLayout>
+      <!-- A time of the day -->
+
+    </StackLayout>
+  </ScrollView>
+
   <FlexboxLayout class="NoActivity" *ngIf="!isLoading && noActivities" row="1" flexDirection="column" alignItems="center" justifyContent="space-between">
     <Image class="NoActivity--Image" src="~/assets/images/icons/goal.png"></Image>
     <StackLayout class="NoActivity--TextWrapper">

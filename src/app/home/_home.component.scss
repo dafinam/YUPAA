@@ -1,5 +1,79 @@
 @import '../app.component';
 
+.Activity--Wrapper {
+  text-align: center;
+
+  .Day-h1 {
+    font-size: 18;
+    font-weight: 500;
+    margin-bottom: 3;
+    opacity: 0;
+    animation-name: bounceIn;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+  .hr {
+    background: $rose-gardient;
+    border-radius: 16px;
+    opacity: 0;
+    animation-name: bounceIn;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;
+  }
+
+  .Time--Wrapper {
+    margin-left: 10;
+    margin-right: 10;
+    margin-top: 15;
+
+    Label {
+      font-size: 17;
+      font-weight: 500;
+      color: $jonquil;
+      margin-left: 5;
+      animation-name: slideInLeft;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+    }
+    Image {
+      opacity: 0;
+      animation-name: bounceIn;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+      animation-delay: 0.5s;
+    }
+  }
+  .Activity--List {
+    margin-top: 10;
+    animation-name: slideInUp;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+
+    .Activity--Item--Wrapper {
+      height: 70;
+      margin: 5 10 0 0;
+
+      .Activity--Item {
+        background-size: cover;
+        height: 60;
+        border-radius: 10;
+  
+        Label {
+          font-size: 17;
+          font-weight: 500;
+          color: white;
+          margin-left: 20;
+        }
+        Image {
+          margin-right: 15;
+        }
+      }
+    }
+  }
+}
+
+
 .NoActivity--Image {
   width: 50%;
   margin-top: 10%;
