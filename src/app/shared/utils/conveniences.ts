@@ -9,7 +9,7 @@ export const queryToModelOptions = (doc: any) => {
 
 export const appendZeroPrefix = (time: number) => {
   return time < 10 ? `0${time}` : time.toString();
-}
+};
 
 export const dayOfWeekIdxToStr = (day: number) => {
   switch (day) {
@@ -24,10 +24,10 @@ export const dayOfWeekIdxToStr = (day: number) => {
     case 4:
       return "thur";
     case 5:
-      return "fri"
+      return "fri";
     case 6:
-      return "sat"
+      return "sat";
     default:
       break;
   }
-}
+};

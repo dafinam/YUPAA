@@ -8,57 +8,61 @@
   <!-- THE ACTION/PAGE-TITLE BAR -->
 
   <ScrollView orientation="vertical" row="1">
-    <WrapLayout class="Card-Wrapper" orientation="horizontal">
+    <FlexboxLayout flexWrap="wrap" justifyContent="space-around">
 
       <!-- Yupaa Hidrate -->
       <FlexboxLayout backgroundImage="~/assets/images/newactivity-hidrate.jpg" stretch="aspectFit" class="NewActivityCard"
         flexDirection="column" alignItems="flex-start" justifyContent="space-between" (tap)="navigateToActivitySetup('/hidrate')">
         <Label text="YUPAA Hidrate" textWrap="true"></Label>
-        <Image src="~/assets/images/icons/success.png" width="30"></Image>
+        <Image *ngIf="isActivityRegistered('yupaa_hidrate')" src="~/assets/images/icons/success.png" width="30"></Image>
       </FlexboxLayout>
       <!-- Yupaa Hidrate -->
 
       <!-- Yupaa Breakfast -->
       <FlexboxLayout backgroundImage="~/assets/images/newactivity-breakfast.jpg" stretch="aspectFit" class="NewActivityCard"
-        flexDirection="column" alignItems="flex-start" justifyContent="space-between">
+        flexDirection="column" alignItems="flex-start" justifyContent="space-between" (tap)="navigateToActivitySetup('/activity/breakfast')">
         <Label text="YUPAA Breakfast" textWrap="true"></Label>
+        <Image *ngIf="isActivityRegistered('yupaa_healthy_breakfast')" src="~/assets/images/icons/success.png" width="30"></Image>
       </FlexboxLayout>
       <!-- Yupaa Breakfast -->
 
       <!-- Yupaa Stretching -->
       <FlexboxLayout backgroundImage="~/assets/images/newactivity-stretching.png" stretch="aspectFit" class="NewActivityCard"
-        flexDirection="column" alignItems="flex-start" justifyContent="space-between">
+        flexDirection="column" alignItems="flex-start" justifyContent="space-between" (tap)="navigateToActivitySetup('/activity/stretching')">
         <Label text="YUPAA Stretching" textWrap="true"></Label>
+        <Image *ngIf="isActivityRegistered('yupaa_stretching')" src="~/assets/images/icons/success.png" width="30"></Image>
       </FlexboxLayout>
       <!-- Yupaa Stretching -->
 
       <!-- Yupaa Meditate -->
       <FlexboxLayout backgroundImage="~/assets/images/newactivity-meditate.png" stretch="aspectFit" class="NewActivityCard"
-        flexDirection="column" alignItems="flex-start" justifyContent="space-between">
+        flexDirection="column" alignItems="flex-start" justifyContent="space-between" (tap)="navigateToActivitySetup('/activity/meditation')">
         <Label text="YUPAA Meditate" textWrap="true"></Label>
+        <Image *ngIf="isActivityRegistered('yupaa_meditation')" src="~/assets/images/icons/success.png" width="30"></Image>
       </FlexboxLayout>
       <!-- Yupaa Meditate -->
 
       <!-- Yupaa Posture -->
       <FlexboxLayout backgroundImage="~/assets/images/newactivity-posture.jpg" stretch="aspectFit" class="NewActivityCard"
-        flexDirection="column" alignItems="flex-start" justifyContent="space-between">
+        flexDirection="column" alignItems="flex-start" justifyContent="space-between" (tap)="navigateToActivitySetup('/activity/posture')">
         <Label text="YUPAA Posture" textWrap="true"></Label>
+        <Image *ngIf="isActivityRegistered('yupaa_posture')" src="~/assets/images/icons/success.png" width="30"></Image>
       </FlexboxLayout>
       <!-- Yupaa Posture -->
 
       <!-- Yupaa GYM -->
-      <FlexboxLayout backgroundImage="~/assets/images/newactivity-gym.jpg" stretch="aspectFit" class="NewActivityCard"
+      <!-- <FlexboxLayout backgroundImage="~/assets/images/newactivity-gym.jpg" stretch="aspectFit" class="NewActivityCard"
         flexDirection="column" alignItems="flex-start" justifyContent="space-between">
         <Label text="YUPAA GYM" textWrap="true"></Label>
-      </FlexboxLayout>
+      </FlexboxLayout> -->
       <!-- Yupaa GYM -->
 
       <!-- Yupaa Climbing -->
-      <FlexboxLayout backgroundImage="~/assets/images/newactivity-climbing.jpg" stretch="aspectFit" class="NewActivityCard"
+      <!-- <FlexboxLayout backgroundImage="~/assets/images/newactivity-climbing.jpg" stretch="aspectFit" class="NewActivityCard"
         flexDirection="column" alignItems="flex-start" justifyContent="space-between">
         <Label text="YUPAA Climbing" textWrap="true"></Label>
-      </FlexboxLayout>
+      </FlexboxLayout> -->
       <!-- Yupaa Climbing -->
-    </WrapLayout>
+    </FlexboxLayout>
   </ScrollView>
 </GridLayout>

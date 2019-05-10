@@ -1,0 +1,163 @@
+<GridLayout class="page page-content" rows="30 *">
+  <FlexboxLayout class="Activity--Title" row="0" flexDirection="row" alignItems="flex-start" justifyContent="space-between">
+    <Label class="Steps" [text]="currentStep + ' of ' + totalSteps"></Label>
+    <Label class="Title" [text]="getActivityName()"></Label>
+    <Image class="Close--Btn" src="~/assets/images/icons/close-btn-fill.png" width="20" (tap)="goBack()"></Image>
+  </FlexboxLayout>
+
+  <!-- The time picker view -->
+  <GridLayout *ngIf="showTimePickView" class="Activity--Content" [rows]="getInfoDivParameter(0, 'size')" row="1">
+    <StackLayout class="Subsection" row="0">
+      <Label class="Question--Label" [text]="getInfoDivParameter(0, 'question')"
+      textWrap="true"></Label>
+      <FlexboxLayout class="Description--Wrapper" flexDirection="row" alignItems="flex-start">
+        <Image src="~/assets/images/icons/warning-fill.png" width="20"></Image>
+        <Label
+          class="Section--Info"
+          [text]="getInfoDivParameter(0, 'info')"
+          textWrap="true"></Label>
+      </FlexboxLayout>
+    </StackLayout>
+
+    <StackLayout class="Config" row="1">
+      <Label class="time-label" text="08:00" (tap)="pickDefinedTime('0800')"></Label>
+      <Label class="time-label" text="11:00" (tap)="pickDefinedTime('1100')"></Label>
+      <Label class="time-label" text="14:00" (tap)="pickDefinedTime('1400')"></Label>
+      <Label class="time-label" text="18:00" (tap)="pickDefinedTime('1800')"></Label>
+      <Label class="time-label" text="20:00" (tap)="pickDefinedTime('2000')"></Label>
+      <Label class="time-picker-label" text="Pick a different time" (tap)="onPickTimeTap($event)"></Label>
+      <TimePickerField class="time" pickerOkText="Pick Time" timeFormat="HH:mm"></TimePickerField>
+    </StackLayout>
+  </GridLayout>
+  <!-- The time picker view -->
+
+  <!-- Days of the week reminder view -->
+  <GridLayout *ngIf="showRemindersView" class="Activity--Content" [rows]="getInfoDivParameter(1, 'size')" row="1">
+    <StackLayout class="Subsection" row="0">
+      <Label class="Question--Label" [text]="getInfoDivParameter(1, 'question')"
+      textWrap="true"></Label>
+      <FlexboxLayout class="Description--Wrapper" flexDirection="row" alignItems="flex-start">
+        <Image src="~/assets/images/icons/warning-fill.png" width="20"></Image>
+        <Label
+          class="Section--Info"
+          [text]="getInfoDivParameter(1, 'info')"
+          textWrap="true"></Label>
+      </FlexboxLayout>
+    </StackLayout>
+
+    <StackLayout class="Config" row="1">
+      <FlexboxLayout class="NextStep--Btn" flexDirection="row" alignItems="center" justifyContent="center" (tap)="showThirdView()">
+        <Image src="~/assets/images/icons/check-white.png" width="20"></Image>
+      </FlexboxLayout>
+      <CheckBox class="WeekDay" #mon text="Monday" fillColor="#FFFFFF" color="#000000" checked="false"></CheckBox>
+      <CheckBox class="WeekDay" #tue text="Tuesday" fillColor="#FFFFFF" color="#000000" checked="false"></CheckBox>
+      <CheckBox class="WeekDay" #wed text="Wednesday" fillColor="#FFFFFF" color="#000000" checked="false"></CheckBox>
+      <CheckBox class="WeekDay" #thu text="Thursday" fillColor="#FFFFFF" color="#000000" checked="false"></CheckBox>
+      <CheckBox class="WeekDay" #fri text="Friday" fillColor="#FFFFFF" color="#000000" checked="false"></CheckBox>
+      <CheckBox class="WeekDay" #sat text="Saturday" fillColor="#FFFFFF" color="#000000" checked="false"></CheckBox>
+      <CheckBox class="WeekDay" #sun text="Sunday" fillColor="#FFFFFF" color="#000000" checked="false"></CheckBox>
+    </StackLayout>
+  </GridLayout>
+  <!-- Days of the week reminder view -->
+
+  <!-- Duration picker view -->
+  <GridLayout *ngIf="showDurationView" class="Activity--Content" [rows]="getInfoDivParameter(2, 'size')" row="1">
+    <StackLayout class="Subsection" row="0">
+      <Label class="Question--Label" [text]="getInfoDivParameter(2, 'question')" textWrap="true"></Label>
+      <FlexboxLayout class="Description--Wrapper" flexDirection="row" alignItems="flex-start">
+        <Image src="~/assets/images/icons/warning-fill.png" width="20"></Image>
+        <Label class="Section--Info" [text]="getInfoDivParameter(2, 'info')" textWrap="true"></Label>
+      </FlexboxLayout>
+    </StackLayout>
+  
+    <StackLayout class="Config" row="1">
+      <Label class="time-label" text="1 min" (tap)="pickDurationTime('1')"></Label>
+      <Label class="time-label" text="3 min" (tap)="pickDurationTime('3')"></Label>
+      <Label class="time-label" text="5 min" (tap)="pickDurationTime('5')"></Label>
+      <Label class="time-label" text="7 min" (tap)="pickDurationTime('7')"></Label>
+      <Label class="time-label" text="9 min" (tap)="pickDurationTime('9')"></Label>
+      <Label class="time-label" text="10 min" (tap)="pickDurationTime('10')"></Label>
+    </StackLayout>
+  </GridLayout>
+  <!-- Duration picker view -->
+
+  <!-- Social configuration view -->
+  <GridLayout *ngIf="showSocialMediaView" class="Activity--Content" [rows]="getInfoDivParameter(3, 'size')" row="1">
+    <StackLayout class="Subsection" row="0">
+      <Label class="Question--Label" [text]="getInfoDivParameter(3, 'question')" textWrap="true"></Label>
+      <FlexboxLayout class="Description--Wrapper" flexDirection="row" alignItems="flex-start">
+        <Image src="~/assets/images/icons/warning-fill.png" width="20"></Image>
+        <Label class="Section--Info" [text]="getInfoDivParameter(3, 'info')" textWrap="true"></Label>
+      </FlexboxLayout>
+    </StackLayout>
+  
+    <FlexboxLayout class="Config" row="1" flexDirection="column" alignItems="flex-start" justifyContent="flex-start">
+      <Label class="time-label" text="Share activity"></Label>
+      <FlexboxLayout class="social-buttons-wrapper" flexDirection="row" justifyContent="space-around">
+        <Button class="social-share-btn-yes" text="Yes" textTransform="none" (tap)="showFifthView(true)"></Button>
+        <Button class="social-share-btn-no" text="No" textTransform="none" (tap)="showFifthView(false)"></Button>
+      </FlexboxLayout>
+    </FlexboxLayout>
+  </GridLayout>
+  <!-- Social configuration view -->
+
+  <!-- Activity name config view -->
+  <GridLayout *ngIf="showActivityNameView" class="Activity--Content" [rows]="getInfoDivParameter(4, 'size')" row="1">
+    <StackLayout class="Subsection" row="0">
+      <Label class="Question--Label" [text]="getInfoDivParameter(4, 'question')" textWrap="true"></Label>
+      <FlexboxLayout class="Description--Wrapper" flexDirection="row" alignItems="flex-start">
+        <Image src="~/assets/images/icons/warning-fill.png" width="20"></Image>
+        <Label class="Section--Info" [text]="getInfoDivParameter(4, 'info')" textWrap="true"></Label>
+      </FlexboxLayout>
+    </StackLayout>
+  
+    <StackLayout class="Config" row="1">
+      <FlexboxLayout class="NextStep--Btn" flexDirection="row" alignItems="center" justifyContent="center"
+        (tap)="showSummary()">
+        <Image src="~/assets/images/icons/check-white.png" width="20"></Image>
+      </FlexboxLayout>
+      <TextField class="input activity-name-input" [(ngModel)]="displayName" autocorrect="false" hint="Activity Name" returnKeyType="done"></TextField>
+    </StackLayout>
+  </GridLayout>
+  <!-- Activity name config view -->
+
+  <!-- SUMMARY -->
+  <GridLayout *ngIf="showSummaryView" class="Activity--Content" [rows]="getInfoDivParameter(5, 'size')" row="1">
+    <StackLayout class="Subsection" row="0">
+      <Label class="Question--Label" [text]="getInfoDivParameter(5, 'question')" textWrap="true"></Label>
+      <FlexboxLayout class="Description--Wrapper" flexDirection="row" alignItems="flex-start">
+        <Image src="~/assets/images/icons/warning-fill.png" width="20"></Image>
+        <Label class="Section--Info" [text]="getInfoDivParameter(5, 'info')" textWrap="true"></Label>
+      </FlexboxLayout>
+    </StackLayout>
+  
+    <FlexboxLayout class="Config" row="1" flexDirection="column" alignItems="flex-start" justifyContent="space-between">
+      <StackLayout>
+        <StackLayout class="summary-item-wrapper">
+          <Label class="item-title" text="Time"></Label>
+          <Label class="item-value" [text]="reminderTime"></Label>
+        </StackLayout>
+        <StackLayout class="summary-item-wrapper">
+          <Label class="item-title" text="Frequency"></Label>
+          <Label class="item-value" [text]="reminderDaysStr"></Label>
+        </StackLayout>
+        <StackLayout *ngIf="hasDuration" class="summary-item-wrapper">
+          <Label class="item-title" text="Duration"></Label>
+          <Label class="item-value" [text]="duration + ' minutes'"></Label>
+        </StackLayout>
+        <StackLayout class="summary-item-wrapper">
+          <Label class="item-title" text="Sharable"></Label>
+          <Label class="item-value" [text]="isSharableStr"></Label>
+        </StackLayout>
+        <StackLayout class="summary-item-wrapper">
+          <Label class="item-title" text="Activity Name"></Label>
+          <Label class="item-value" [text]="displayName"></Label>
+        </StackLayout>
+      </StackLayout>
+      <StackLayout class="summary-btn-wrapper">
+        <Button class="kickoff-btn" text="Let's do this!" textTransform="none" (tap)="setupActivity()" [isEnabled]="!isSubmitting"></Button>
+      </StackLayout>
+    </FlexboxLayout>
+  </GridLayout>
+  <!-- SUMMARY -->
+</GridLayout>

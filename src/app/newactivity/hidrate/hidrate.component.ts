@@ -3,7 +3,11 @@ import { RouterExtensions } from "nativescript-angular";
 import { UserService } from "~/app/shared/services/user.service";
 import { ActivityService } from "~/app/shared/services/activity.service";
 import { Activity } from "~/app/shared/models/activity";
-import { appendZeroPrefix } from "~/app/shared/utils/conveniences"
+import { appendZeroPrefix } from "~/app/shared/utils/conveniences";
+import { EventData } from "tns-core-modules/ui/page/page";
+import { DateTimePicker } from "nativescript-datetimepicker";
+import { Button } from "tns-core-modules/ui/button";
+import * as statusBar from "nativescript-status-bar";
 
 @Component({
   moduleId: module.id,
@@ -13,10 +17,12 @@ import { appendZeroPrefix } from "~/app/shared/utils/conveniences"
 })
 export class HidrateComponent implements OnInit {
   isSubmitting: boolean = false;
-  private _wakeupTime: Date;
-  private _lunchTime: Date;
-  private _dinnerTime: Date;
-  private _sleepTime: Date;
+  private _wakeupTime: string = "0700";
+  private _lunchTime: string = "1100";
+  private _dinnerTime: string = "1800";
+  private _sleepTime: string = "2300";
+  private beforeLunch!: string;
+  private afterLunch!: string;
 
   constructor(
     private router: RouterExtensions,
@@ -29,71 +35,92 @@ export class HidrateComponent implements OnInit {
   get wakupTime() {
     return this._wakeupTime;
   }
-
-  set wakupTime(value: Date) {
+  set wakupTime(value: string) {
     this._wakeupTime = value;
   }
+
   get lunchTime() {
     return this._lunchTime;
   }
-
-  set lunchTime(value: Date) {
+  set lunchTime(value: string) {
     this._lunchTime = value;
   }
+
   get dinnerTime() {
     return this._dinnerTime;
   }
-
-  set dinnerTime(value: Date) {
+  set dinnerTime(value: string) {
     this._dinnerTime = value;
   }
+
   get sleepTime() {
     return this._sleepTime;
   }
-
-  set sleepTime(value: Date) {
+  set sleepTime(value: string) {
     this._sleepTime = value;
   }
 
   ngOnInit() {
-    // Write init logic here
+    statusBar.hide();
   }
 
   goBack(): void {
     this.router.back();
   }
 
+  onPickTimeTap(args: EventData, selectingTime: string, preferredHour: number, preferredMinutes: number): void {
+    const dateToday = new Date();
+    const dateTomorrow = new Date(dateToday.getFullYear(), dateToday.getMonth(), dateToday.getDate() + 1);
+    dateTomorrow.setHours(preferredHour);
+    dateTomorrow.setMinutes(preferredMinutes);
+    DateTimePicker.pickTime({
+      context: (<Button>args.object)._context,
+      time: dateTomorrow,
+      okButtonText: "OK",
+      cancelButtonText: "Cancel",
+      title: "choose time",
+      locale: "en_UK",
+      is24Hours: true
+    }).then((selected: Date) => {
+      if (selected) {
+        const h = selected.getHours();
+        const m = selected.getMinutes();
+        const timeText = (h < 10 ? "0" : "") + h + (m < 10 ? "0" : "") + m;
+
+        if (selectingTime === "wakupTime") {
+          this.wakupTime = timeText;
+        } else if (selectingTime === "lunchTime") {
+          this.lunchTime = timeText;
+          const beforeLunch = new Date(selected.getTime());
+          beforeLunch.setMinutes(beforeLunch.getMinutes() - 30); // 30 Minutes Before Lunch
+          this.beforeLunch = appendZeroPrefix(beforeLunch.getHours()) + appendZeroPrefix(beforeLunch.getMinutes());
+
+          const afterLunch = new Date(selected.getTime());
+          afterLunch.setMinutes(afterLunch.getMinutes() + 30);
+          this.afterLunch = appendZeroPrefix(afterLunch.getHours()) + appendZeroPrefix(afterLunch.getMinutes());
+        } else if (selectingTime === "dinnerTime") {
+          this.dinnerTime = timeText;
+        } else if (selectingTime === "sleepTime") {
+          this.sleepTime = timeText;
+        }
+      }
+    });
+  }
+
   registerActivity(): void {
-    this.isSubmitting = true; 
-    const wakeupTime: string = appendZeroPrefix(
-      this.wakupTime.getHours()) + appendZeroPrefix(this.wakupTime.getMinutes());
-    
-    const beforeLunch = new Date(this.lunchTime.getTime());
-    beforeLunch.setMinutes(beforeLunch.getMinutes() - 30); // 30 Minutes Before Lunch
-    const beforeLunchTime: string = appendZeroPrefix(
-      beforeLunch.getHours()) + appendZeroPrefix(beforeLunch.getMinutes());
-
-    const afterLunch = new Date(this.lunchTime.getTime());
-    afterLunch.setMinutes(afterLunch.getMinutes() + 30);
-    const afterLunchTime: string = appendZeroPrefix(
-      afterLunch.getHours()) + appendZeroPrefix(afterLunch.getMinutes());
-
-    const dinnerTime: string = appendZeroPrefix(
-      this.dinnerTime.getHours()) + appendZeroPrefix(this.dinnerTime.getMinutes());
-
-    const sleepTime: string = appendZeroPrefix(
-      this.sleepTime.getHours()) + appendZeroPrefix(this.sleepTime.getMinutes());
+    this.isSubmitting = true;
 
     this.userService.getUserUid().then((userId) => {
       const hidrateActivity: Activity = new Activity({
         user_id: userId,
-        activity_name: "yupaa_hidrate",
+        activity_name: "Hidrate",
+        activity_key: "yupaa_hidrate",
         times: [
-          wakeupTime,
-          beforeLunchTime,
-          afterLunchTime,
-          dinnerTime,
-          sleepTime
+          this.wakupTime,
+          this.beforeLunch,
+          this.afterLunch,
+          this.dinnerTime,
+          this.sleepTime
         ],
         reminders: ["mon", "tue", "wed", "thur", "fri", "sat", "sun"]
       });

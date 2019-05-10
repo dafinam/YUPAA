@@ -6,10 +6,14 @@ import { AppComponent } from "./app.component";
 import { TourComponent } from "./tour/tour.component";
 import { LoginComponent } from "./login/login.component";
 import { TourSlidesService } from "./tour/tour-slides.service";
-import { NativeScriptFormsModule } from "nativescript-angular";
+import { NativeScriptFormsModule, registerElement } from "nativescript-angular";
 import { LoadingComponent } from "./custom-components/loading.component";
 import { HidrateComponent } from "./newactivity/hidrate/hidrate.component";
 import { NativeScriptDateTimePickerModule } from "nativescript-datetimepicker/angular";
+import { GenericActivityComponent } from "./newactivity/generic/generic-activity.component";
+import { NativeScriptCommonModule } from "nativescript-angular/common";
+
+registerElement("NumericKeyboard", () => require("nativescript-numeric-keyboard").NumericKeyboardView);
 
 @NgModule({
     bootstrap: [
@@ -17,9 +21,13 @@ import { NativeScriptDateTimePickerModule } from "nativescript-datetimepicker/an
     ],
     imports: [
         NativeScriptModule,
+        NativeScriptCommonModule,
         AppRoutingModule,
         NativeScriptFormsModule,
         NativeScriptDateTimePickerModule
+    ],
+    exports: [
+        LoadingComponent
     ],
     providers: [
         TourSlidesService
@@ -29,7 +37,8 @@ import { NativeScriptDateTimePickerModule } from "nativescript-datetimepicker/an
         TourComponent,
         LoginComponent,
         LoadingComponent,
-        HidrateComponent
+        HidrateComponent,
+        GenericActivityComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

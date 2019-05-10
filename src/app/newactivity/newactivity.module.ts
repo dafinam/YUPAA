@@ -3,11 +3,13 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 import { NewActivityRoutingModule } from "./newactivity-routing.module";
 import { NewActivityComponent } from "./newactivity.component";
+import { TNSCheckBoxModule } from "nativescript-checkbox/angular";
 
 @NgModule({
   imports: [
     NativeScriptCommonModule,
-    NewActivityRoutingModule
+    NewActivityRoutingModule,
+    TNSCheckBoxModule
   ],
   declarations: [
     NewActivityComponent
