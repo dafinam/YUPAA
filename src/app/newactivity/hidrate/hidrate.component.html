@@ -1,44 +1,44 @@
-<GridLayout class="page page-content" rows="80, 100 *">
-  <FlexboxLayout row="0" flexDirection="row" alignItems="center" justifyContent="space-between" class="title-wrapper">
+<GridLayout class="page page-content" rows="30 *">
+  <FlexboxLayout class="Activity--Title" row="0" flexDirection="row" alignItems="flex-start"
+    justifyContent="space-between">
     <StackLayout></StackLayout>
-    <Label class="title" text="Setup Yupaa Hidrate"></Label>
-    <Image class="close-btn" src="~/assets/images/icons/close-button.png" width="20" (tap)="goBack()"></Image>
+    <Label class="Title" text="Setup Yupaa Hidrate"></Label>
+    <Image class="Close--Btn" src="~/assets/images/icons/close-btn-fill.png" width="20" (tap)="goBack()"></Image>
   </FlexboxLayout>
-  <GridLayout row="1" rows="*" columns="30, *" class="Info-Wrapper">
-    <Image row="0" col="0" src="~/assets/images/icons/warning.png" width="20"></Image>
-    <Label row="0" col="1" class="title" text="Yuppa hidrate helps you create a routine of drinking water by sending you notification during different times of the day until you reach the desired amount of water during a day." textWrap="true"></Label>
+
+  <GridLayout class="Activity--Content" rows="100 *" row="1">
+    <StackLayout class="Subsection" row="0">
+      <Label class="Question--Label" text="Lets keep you hidrated all day!" textWrap="true"></Label>
+      <FlexboxLayout class="Description--Wrapper" flexDirection="row" alignItems="flex-start">
+        <Image src="~/assets/images/icons/warning-fill.png" width="20"></Image>
+        <Label class="Section--Info" text="Yuppa hidrate helps you create a routine of drinking water by sending you notification during different times of the day until you reach the desired amount of water during a day." textWrap="true"></Label>
+      </FlexboxLayout>
+    </StackLayout>
+  
+    <FlexboxLayout class="Config" row="1" flexDirection="column" alignItems="flex-start" justifyContent="space-between">
+      <StackLayout class="Config--Times">
+        <StackLayout class="Time--Item">
+          <Label class="time" [text]="wakupTime" (tap)="onPickTimeTap($event, 'wakupTime', 7, 0)"></Label>
+          <Label class="caption" text="Pick wakup time"></Label>
+        </StackLayout>
+        <StackLayout class="Time--Item">
+          <Label class="time" [text]="lunchTime" (tap)="onPickTimeTap($event, 'lunchTime', 11, 0)"></Label>
+          <Label class="caption" text="Pick lunch time"></Label>
+        </StackLayout>
+        <StackLayout class="Time--Item">
+          <Label class="time" [text]="dinnerTime" (tap)="onPickTimeTap($event, 'dinnerTime', 18, 0)"></Label>
+          <Label class="caption" text="Pick dinner time"></Label>
+        </StackLayout>
+        <StackLayout class="Time--Item">
+          <Label class="time" [text]="sleepTime" (tap)="onPickTimeTap($event, 'sleepTime', 23, 0)"></Label>
+          <Label class="caption" text="Pick sleep time"></Label>
+        </StackLayout>
+        <TimePickerField class="timepicker" pickerOkText="Pick Time" timeFormat="HH:mm"></TimePickerField>
+      </StackLayout>
+      <StackLayout class="summary-btn-wrapper">
+        <Button class="kickoff-btn" text="Let's do this!" textTransform="none" (tap)="registerActivity()"
+          [isEnabled]="!isSubmitting"></Button>
+      </StackLayout>
+    </FlexboxLayout>
   </GridLayout>
-  <FlexboxLayout row="3" flexDirection="column" alignItems="flex-start" justifyContent="space-around" class="Config-Wrapper">
-    <StackLayout>
-      <TimePickerField class="time" [(ngModel)]="wakupTime" hint="Pick time" pickerOkText="Pick Time" pickerDefaultTime="08:00"
-        timeFormat="HH:mm">
-      </TimePickerField>
-      <StackLayout class="hr-light m-10" android:visibility="collapse"></StackLayout>
-      <Label class="caption" text="Wakup Time"></Label>
-    </StackLayout>
-    <StackLayout>
-      <TimePickerField class="time" [(ngModel)]="lunchTime" hint="Pick time" pickerOkText="Pick Time" pickerDefaultTime="11:00"
-        timeFormat="HH:mm">
-      </TimePickerField>
-      <StackLayout class="hr-light m-10" android:visibility="collapse"></StackLayout>
-      <Label class="caption" text="Lunch Time"></Label>
-    </StackLayout>
-    <StackLayout>
-      <TimePickerField class="time" [(ngModel)]="dinnerTime" hint="Pick time" pickerOkText="Pick Time" pickerDefaultTime="17:00"
-        timeFormat="HH:mm">
-      </TimePickerField>
-      <StackLayout class="hr-light m-10" android:visibility="collapse"></StackLayout>
-      <Label class="caption" text="Dinner Time"></Label>
-    </StackLayout>
-    <StackLayout>
-      <TimePickerField class="time" [(ngModel)]="sleepTime" hint="Pick time" pickerOkText="Pick Time" pickerDefaultTime="23:00"
-        timeFormat="HH:mm">
-      </TimePickerField>
-      <StackLayout class="hr-light m-10" android:visibility="collapse"></StackLayout>
-      <Label class="caption" text="Sleep Time"></Label>
-    </StackLayout>
-    <StackLayout class="Button-Wrapper">
-      <Button [class]="isSubmitting ? 'disabled' : ''" text="Ready to start!" [isEnabled]="!isSubmitting" textTransform="none" (tap)="registerActivity()"></Button>
-    </StackLayout>
-  </FlexboxLayout>
 </GridLayout>

@@ -8,7 +8,7 @@ import { queryToModelOptions } from "../utils/conveniences";
 })
 export class ActivityService {
 
-  hasUserActivityCollection (userId: string): Promise<boolean> {
+  hasUserActivityCollection(userId: string): Promise<boolean> {
     return firebase.firestore.collection("yupaa_activities")
     .doc(userId)
     .get()
@@ -21,7 +21,7 @@ export class ActivityService {
   addActivity(activityData: Activity): Promise<any> {
     return firebase.firestore
       .collection("yupaa_activities")
-      .doc(`${activityData.userId}_${activityData.activityName}`)
+      .doc(`${activityData.userId}_${activityData.activityKey}`)
       .set(activityData.toDocEntries())
       .then((docRef: any) => Promise.resolve(docRef))
       .catch((error: any) => Promise.reject(new Error(error)));
@@ -35,10 +35,12 @@ export class ActivityService {
     .then((activityDoc: any) => {
       if (activityDoc.exists) {
         const opts = queryToModelOptions(activityDoc);
+
         return new Activity(opts);
       }
+
       return undefined;
-    })
+    });
   }
 
 }

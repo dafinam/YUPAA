@@ -1,0 +1,145 @@
+@import '../../app.component';
+
+.page-content {
+  background-color: $behance-white;
+  padding: 10;
+}
+
+.Activity--Title {
+  .Steps {
+    font-size: 15;
+    color: $icon-grey;
+    font-weight: 400;
+  }
+
+  .Title {
+    font-weight: 600;
+    color: #000000;
+  }
+}
+
+.Activity--Content {
+  margin: 10;
+
+  .Subsection {
+    border-width: 0 0 0.7 0;
+    border-color: rgba($color: #828A71, $alpha: 0.3);
+
+    .Question--Label {
+      font-size: 15;
+      color: #000000;
+    }
+
+    .Description--Wrapper {
+      margin-top: 10;
+      Label {
+        margin-left: 10;
+        font-size: 13;
+        color: $icon-grey;
+      }
+    }
+  }
+
+  .Config {
+    .NextStep--Btn {
+      width: 80;
+      height: 40;
+      margin-top: -15;
+      margin-left: 160;
+      background-color: $behance-blue;
+      border-radius: 15;
+      opacity: 0;
+      animation-name: fadeIn;
+      animation-duration: 0.5s;
+      animation-delay: 1s;
+      animation-fill-mode: forwards;
+    }
+
+    .time-label {
+      font-size: 14;
+      color: #000000;
+      margin-top: 40;
+      font-weight: 500;
+    }
+
+    .time-picker-label {
+      font-size: 15;
+      color: #000000;
+      margin-top: 40;
+      font-weight: 600;
+    }
+
+    .WeekDay {
+      margin-bottom: 30;
+    }
+
+    .social-buttons-wrapper {
+      width: 100%;
+      margin-top: 40;
+      .social-share-btn-yes {
+        width: 120;
+        height: 50;
+        font-size: 18;
+        font-weight: 600;
+        background-color: $behance-green;
+        color: white;
+        border-radius: 10;
+      }
+      .social-share-btn-no {
+        width: 120;
+        height: 50;
+        font-size: 18;
+        font-weight: 600;
+        background-color: $behance-red;
+        color: white;
+        border-radius: 10;
+      }
+    }
+
+    .activity-name-input {
+      font-size: 15;
+      font-weight: 500;
+      margin-top: 40;
+      color: #000000;
+      width: 90%;
+    }
+
+    .summary-item-wrapper {
+      margin-top: 40;
+      width: 100%;
+
+      .item-title {
+        font-size: 14;
+        font-weight: 500;
+        color: #000000;
+        margin-bottom: 3;
+      }
+
+      .item-value {
+        font-size: 13;
+        font-weight: 300;
+        color: $icon-grey
+      }
+    }
+
+    .summary-btn-wrapper {
+      width: 100%;
+      text-align: center;
+
+      .kickoff-btn {
+        width: 90%;
+        height: 50;
+        background-color: $behance-blue;
+        color: white;
+        border-radius: 10;
+        opacity: 0;
+        font-size: 18;
+        font-weight: 500;
+        animation-name: bounceIn;
+        animation-duration: 0.5s;
+        animation-delay: 1s;
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+}
