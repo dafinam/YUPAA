@@ -10,6 +10,68 @@ import { UserService } from "../shared/services/user.service";
   styleUrls: ["./newactivity.component.scss"]
 })
 export class NewActivityComponent implements OnInit {
+  activitiesToChooseFrom: Array<any> = [
+    {
+      name: "Hidrate",
+      background: "~/assets/images/newactivity-hidrate.jpg",
+      key: "yupaa_hidrate",
+      route: "/hidrate"
+    },
+    {
+      name: "Breakfast",
+      background: "~/assets/images/newactivity-breakfast.jpg",
+      key: "yupaa_healthy_breakfast",
+      route: "/activity/breakfast"
+    },
+    {
+      name: "Stretching",
+      background: "~/assets/images/newactivity-stretching.png",
+      key: "yupaa_stretching",
+      route: "/activity/stretching"
+    },
+    {
+      name: "Meditation",
+      background: "~/assets/images/newactivity-meditate.png",
+      key: "yupaa_meditation",
+      route: "/activity/meditation"
+    },
+    {
+      name: "Posture",
+      background: "~/assets/images/newactivity-posture.jpg",
+      key: "yupaa_posture",
+      route: "/activity/posture"
+    },
+    {
+      name: "Study",
+      background: "~/assets/images/newactivity-study.png",
+      key: "yupaa_study",
+      route: "/activity/study"
+    },
+    {
+      name: "Walk",
+      background: "~/assets/images/newactivity-walking.jpg",
+      key: "yupaa_walk",
+      route: "/activity/walk"
+    },
+    {
+      name: "My Own",
+      background: "~/assets/images/newactivity-generic.jpg",
+      key: "generic",
+      route: "/activity/generic"
+    }
+    // {
+    //   name: "Workout",
+    //   background: "~/assets/images/newactivity-gym.jpg",
+    //   key: "yupaa_workot",
+    //   route: "/workout"
+    // },
+    // {
+    //   name: "Climbing",
+    //   background: "~/assets/images/newactivity-climbing.jpg",
+    //   key: "yupaa_climbing",
+    //   route: "/activity/climbing"
+    // },
+  ];
   userActivities: Array<IUserActivity> = [];
 
   constructor(

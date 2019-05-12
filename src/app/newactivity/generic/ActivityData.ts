@@ -146,6 +146,78 @@ export class ActivityDataService {
           }
         ]
       },
+      walk: {
+        name: "Walk",
+        activityKey: "walk",
+        descriptions: [
+          { // Time selection view
+            question: "Lorem ipsum dolor sit amet?",
+            info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            size: "100 *"
+          },
+          { // Weekdays reminder selection view
+            question: "Lorem ipsum dolor sit amet?",
+            info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            size: "100 *"
+          },
+          { // Duration selection view
+            question: "Lorem ipsum dolor sit amet?",
+            info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            size: "100 *"
+          },
+          { // Social sharability view
+            question: "Lorem ipsum dolor sit amet?",
+            info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            size: "100 *"
+          },
+          { // Activity name pick view
+            question: "Lorem ipsum dolor sit amet?",
+            info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            size: "100 *"
+          },
+          { // Summary view
+            question: "Lorem ipsum dolor sit amet?",
+            info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            size: "100 *"
+          }
+        ]
+      },
+      study: {
+        name: "Study",
+        activityKey: "study",
+        descriptions: [
+          { // Time selection view
+            question: "Lorem ipsum dolor sit amet?",
+            info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            size: "100 *"
+          },
+          { // Weekdays reminder selection view
+            question: "Lorem ipsum dolor sit amet?",
+            info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            size: "100 *"
+          },
+          { // Duration selection view
+            question: "Lorem ipsum dolor sit amet?",
+            info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            size: "100 *"
+          },
+          { // Social sharability view
+            question: "Lorem ipsum dolor sit amet?",
+            info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            size: "100 *"
+          },
+          { // Activity name pick view
+            question: "Lorem ipsum dolor sit amet?",
+            info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            size: "100 *"
+          },
+          { // Summary view
+            question: "Lorem ipsum dolor sit amet?",
+            info: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+            size: "100 *"
+          }
+        ]
+      },
       generic: {
         name: "New Activity ☺️",
         activityKey: "generic",

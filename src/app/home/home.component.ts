@@ -92,7 +92,6 @@ export class HomeComponent implements OnInit {
   private async prepareView() {
     /* First of check if user has any activities subscribed */
     if (this.loggedUser.activities && this.loggedUser.activities.length > 0) {
-      // TODO: Fetch all activities and list them on the home page
       this.isLoading = false;
       const timeActivities = {};
       const d = new Date();
@@ -104,7 +103,7 @@ export class HomeComponent implements OnInit {
             const activityItem = {
               time,
               activityName: activityData.activityName,
-              isCompleted: false
+              isCompleted: false // TODO: compute the "isCompleted" based on the logs
             };
             if (timeActivities[time]) {
               timeActivities[time].push(activityItem);

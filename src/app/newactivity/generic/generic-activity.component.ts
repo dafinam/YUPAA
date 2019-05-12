@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from "@angular/core";
 import { ActivityService } from "~/app/shared/services/activity.service";
 import { RouterExtensions, PageRoute } from "nativescript-angular";
 import * as statusBar from "nativescript-status-bar";
@@ -16,7 +16,7 @@ import { ActivityDataService } from "./ActivityData";
   templateUrl: "./generic-activity.component.html",
   styleUrls: ["./generic-activity.component.scss"]
 })
-export class GenericActivityComponent implements OnInit {
+export class GenericActivityComponent implements OnInit, OnDestroy {
   showTimePickView: boolean = true;
   showRemindersView: boolean = false;
   showDurationView: boolean = false;
@@ -135,6 +135,10 @@ export class GenericActivityComponent implements OnInit {
         this.selectedActivity = activityname;
         this.displayName = this.presetActivityDescriptions[activityname].name;
       });
+  }
+
+  ngOnDestroy() {
+    statusBar.show();
   }
 
   goBack(): void {
