@@ -26,7 +26,7 @@
       <Label class="time-label" text="18:00" (tap)="pickDefinedTime('1800')"></Label>
       <Label class="time-label" text="20:00" (tap)="pickDefinedTime('2000')"></Label>
       <Label class="time-picker-label" text="Pick a different time" (tap)="onPickTimeTap($event)"></Label>
-      <TimePickerField class="time" pickerOkText="Pick Time" timeFormat="HH:mm"></TimePickerField>
+      <TimePickerField class="timepicker" pickerOkText="Pick Time" timeFormat="HH:mm"></TimePickerField>
     </StackLayout>
   </GridLayout>
   <!-- The time picker view -->
@@ -46,16 +46,17 @@
     </StackLayout>
 
     <StackLayout class="Config" row="1">
-      <FlexboxLayout class="NextStep--Btn" flexDirection="row" alignItems="center" justifyContent="center" (tap)="showThirdView()">
+      <FlexboxLayout class="NextStep--Btn" flexDirection="row" alignItems="center" justifyContent="center"
+        (tap)="showThirdView()">
         <Image src="~/assets/images/icons/check-white.png" width="20"></Image>
       </FlexboxLayout>
-      <CheckBox class="WeekDay" #mon text="Monday" fillColor="#FFFFFF" color="#000000" checked="false"></CheckBox>
-      <CheckBox class="WeekDay" #tue text="Tuesday" fillColor="#FFFFFF" color="#000000" checked="false"></CheckBox>
-      <CheckBox class="WeekDay" #wed text="Wednesday" fillColor="#FFFFFF" color="#000000" checked="false"></CheckBox>
-      <CheckBox class="WeekDay" #thu text="Thursday" fillColor="#FFFFFF" color="#000000" checked="false"></CheckBox>
-      <CheckBox class="WeekDay" #fri text="Friday" fillColor="#FFFFFF" color="#000000" checked="false"></CheckBox>
-      <CheckBox class="WeekDay" #sat text="Saturday" fillColor="#FFFFFF" color="#000000" checked="false"></CheckBox>
-      <CheckBox class="WeekDay" #sun text="Sunday" fillColor="#FFFFFF" color="#000000" checked="false"></CheckBox>
+      <CheckBox class="WeekDay" #mon text="Monday" [fillColor]="checkboxColor" color="" checked="false"></CheckBox>
+      <CheckBox class="WeekDay" #tue text="Tuesday" [fillColor]="checkboxColor" checked="false"></CheckBox>
+      <CheckBox class="WeekDay" #wed text="Wednesday" [fillColor]="checkboxColor" checked="false"></CheckBox>
+      <CheckBox class="WeekDay" #thu text="Thursday" [fillColor]="checkboxColor" checked="false"></CheckBox>
+      <CheckBox class="WeekDay" #fri text="Friday" [fillColor]="checkboxColor" checked="false"></CheckBox>
+      <CheckBox class="WeekDay" #sat text="Saturday" [fillColor]="checkboxColor" checked="false"></CheckBox>
+      <CheckBox class="WeekDay" #sun text="Sunday" [fillColor]="checkboxColor" checked="false"></CheckBox>
     </StackLayout>
   </GridLayout>
   <!-- Days of the week reminder view -->

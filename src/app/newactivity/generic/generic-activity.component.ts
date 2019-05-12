@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { ActivityService } from "~/app/shared/services/activity.service";
 import { RouterExtensions, PageRoute } from "nativescript-angular";
 import * as statusBar from "nativescript-status-bar";
-import { EventData } from "tns-core-modules/ui/page/page";
+import { EventData, isIOS } from "tns-core-modules/ui/page/page";
 import { DateTimePicker } from "nativescript-datetimepicker";
 import { Button } from "tns-core-modules/ui/button";
 import { switchMap } from "rxjs/operators";
@@ -96,6 +96,32 @@ export class GenericActivityComponent implements OnInit {
 
   get isSubmitting() {
     return this._isSubmitting;
+  }
+
+  get totalSteps() {
+    if (this.selectedActivity) {
+      return this.activitiesWithDuration.indexOf(this.selectedActivity) > -1 ? 6 : 5;
+    }
+  }
+
+  get hasDuration() {
+    return this.activitiesWithDuration.indexOf(this.selectedActivity) > -1;
+  }
+
+  get activityKey() {
+    if (this.selectedActivity === "generic") {
+      return this.displayName.split(" ").join("_");
+    } else {
+      return `yupaa_${this.presetActivityDescriptions[this.selectedActivity].activityKey}`;
+    }
+  }
+
+  get checkboxColor() {
+    if (isIOS) {
+      return "#FFFFFF";
+    }
+
+    return "#2D7AEC";
   }
 
   ngOnInit() {
@@ -209,24 +235,6 @@ export class GenericActivityComponent implements OnInit {
 
   nextStep() {
     this.currentStep = this.currentStep + 1;
-  }
-
-  get totalSteps() {
-    if (this.selectedActivity) {
-      return this.activitiesWithDuration.indexOf(this.selectedActivity) > -1 ? 6 : 5;
-    }
-  }
-
-  get hasDuration() {
-    return this.activitiesWithDuration.indexOf(this.selectedActivity) > -1;
-  }
-
-  get activityKey() {
-    if (this.selectedActivity === "generic") {
-      return this.displayName.split(" ").join("_");
-    } else {
-      return `yupaa_${this.presetActivityDescriptions[this.selectedActivity].activityKey}`;
-    }
   }
 
   setupActivity(): void {
