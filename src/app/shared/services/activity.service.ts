@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import * as firebase from "nativescript-plugin-firebase";
-import { Activity } from "../models/activity";
+import { Activity, IActivityLog } from "../models/activity";
 import { queryToModelOptions } from "../utils/conveniences";
 
 @Injectable({
@@ -43,4 +43,27 @@ export class ActivityService {
     });
   }
 
+  logActivity(docId: string, newLog: IActivityLog): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.getActivity(docId)
+      .then((activity: Activity) => {
+        const logs = activity.logs || [];
+        if (logs[0] && logs[0].date === newLog.date) {
+          const updatedTimes = logs[0].times;
+          updatedTimes.push(newLog.times[0]);
+          logs[0].times = updatedTimes;
+        } else {
+          logs.unshift(newLog);
+        }
+
+        return firebase.firestore
+          .collection("yupaa_activities")
+          .doc(docId)
+          .update({
+            logs
+          }).then(() => resolve())
+          .catch((e: any) => reject(new Error(e)));
+      });
+    });
+  }
 }

@@ -1,0 +1,38 @@
+<GridLayout class="page page-content" rows="50 *" [backgroundColor]="stylingData.pageBackground" *ngIf="!isLoading">
+  <FlexboxLayout class="Header" row="0" flexDirection="row" alignItems="center" justifyContent="flex-start" *ngIf="!showCompleteAnimation">
+    <Image class="Close--Btn" src="~/assets/images/icons/arrow-left-white.png" width="20" (tap)="goBack()"></Image>
+  </FlexboxLayout>
+
+  <GridLayout class="Content" rows="4* * 100" row="1" *ngIf="!showCompleteAnimation">
+    <FlexboxLayout class="Icon--Title" row="0" flexDirection="column" alignItems="center" justifyContent="center">
+      <Image class="Activity-Icon" [src]="stylingData.icon"></Image>
+      <Label class="roboto-regular" [text]="stylingData.activityTitle"></Label>
+    </FlexboxLayout>
+
+
+    <FlexboxLayout class="Duration" row="1" flexDirection="column" alignItems="center" *ngIf="hasDuration">
+      <Label class="roboto-thin" [text]="durationTimer"></Label>
+    </FlexboxLayout>
+  
+    <GridLayout columns="* *" row="2">
+      <FlexboxLayout class="Streak" col="0" flexDirection="row" alignItems="center" justifyContent="center">
+        <Label class="roboto-regular" text="Streak nr 3"></Label>
+      </FlexboxLayout>
+      <GridLayout class="Control" rows="*, auto" columns="*" col="1">
+        <StackLayout [backgroundColor]="stylingData.btnBorderColor" rowSpan="2" row="0" class="Btn--Border"></StackLayout>
+        <FlexboxLayout [backgroundColor]="stylingData.btnMainColor" row="1" class="Complete--Btn" flexDirection="row"
+          alignItems="center" justifyContent="center" (tap)="logActivity()">
+          <Label class="roboto-regular" text="Complete"></Label>
+        </FlexboxLayout>
+      </GridLayout>
+    </GridLayout>
+  </GridLayout>
+
+  <FlexboxLayout class="CompleteTask--Wrapper" row="2" flexDirection="row" alignItems="center" justifyContent="center" *ngIf="showCompleteAnimation">
+    <StackLayout>
+      <Image class="RewardIcon" src="~/assets/images/icons/achievement.png"></Image>
+      <Label class="robot-bold complete-title" text="Well Done!" textWrap="true"></Label>
+      <Label class="robot-regular complete-streak" text="Streak nr 3 on Hidrate 🚀" textWrap="true"></Label>
+    </StackLayout>
+  </FlexboxLayout>
+</GridLayout>

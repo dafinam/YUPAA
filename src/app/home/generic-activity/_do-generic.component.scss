@@ -1,0 +1,198 @@
+@import '../../app.component';
+
+.Header {
+  .Close--Btn {
+    margin-top: 15;
+    margin-left: 20;
+  }
+}
+
+.Content {
+  .Icon--Title {
+    .Activity-Icon {
+      width: 30%;
+      opacity: 0;
+      animation-name: slide-in-fwd-center;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    }
+    Label {
+      margin-top: 40;
+      color: $behance-white;
+      font-size: 18;
+    }
+  }
+
+  .Duration {
+    Label {
+      color: $behance-white;
+      font-size: 22;
+      letter-spacing: 0.2;
+      animation-name: jello-horizontal;
+      animation-duration: 0.9;
+      animation-delay: 1;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  .Streak {
+    Label {
+      font-size: 18;
+      color: $behance-white;
+    }
+  }
+
+  .Control {
+    .Btn--Border {
+      border-top-left-radius: 25;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      animation-name: scale-in-br;
+      animation-duration: 0.5;
+      animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+      animation-fill-mode: forwards;
+    }
+    .Complete--Btn {
+      border-top-left-radius: 25;
+      width: 100%;
+      height: 90%;
+      margin-left: 10%;
+      opacity: 0;
+      animation-name: scale-in-br;
+      animation-duration: 0.5;
+      animation-delay: 0.5;
+      animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+      animation-fill-mode: forwards;
+      Label {
+        font-size: 18;
+        letter-spacing: 0.05;
+        color: $behance-white;
+      }
+    }
+  }
+}
+
+.CompleteTask--Wrapper {
+  padding: 25;
+
+  .RewardIcon {
+    width: 40%;
+    opacity: 0;
+    animation-name: slide-in-fwd-center;
+    animation-duration: 1s;
+    animation-delay: 1.5s;
+    animation-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550);
+    animation-fill-mode: forwards;
+  }
+  .complete-title, .complete-streak {
+    text-align: center;
+    color: $behance-white;
+    opacity: 0;
+    animation-name: slide-in-fwd-center;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-fill-mode: forwards;
+  }
+
+  .complete-title {
+    font-size: 20;
+    margin-top: 20;
+  }
+
+  .complete-streak {
+    font-size: 14;
+    margin-top: 5;
+  }
+}
+
+@-webkit-keyframes jello-horizontal {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+@keyframes jello-horizontal {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@-webkit-keyframes scale-in-br {
+  0% {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+@keyframes scale-in-br {
+  0% {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes  slide-in-fwd-center {
+  0% {
+    transform: translateZ(-1400px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+@keyframes  slide-in-fwd-center {
+  0% {
+    transform: translateZ(-1400px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}

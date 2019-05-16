@@ -12,6 +12,7 @@ import { HidrateComponent } from "./newactivity/hidrate/hidrate.component";
 import { NativeScriptDateTimePickerModule } from "nativescript-datetimepicker/angular";
 import { GenericActivityComponent } from "./newactivity/generic/generic-activity.component";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
+import { DoGenericActivityComponent } from "./home/generic-activity/do-generic.component";
 
 registerElement("NumericKeyboard", () => require("nativescript-numeric-keyboard").NumericKeyboardView);
 
@@ -38,7 +39,8 @@ registerElement("NumericKeyboard", () => require("nativescript-numeric-keyboard"
         LoginComponent,
         LoadingComponent,
         HidrateComponent,
-        GenericActivityComponent
+        GenericActivityComponent,
+        DoGenericActivityComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

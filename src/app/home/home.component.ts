@@ -4,6 +4,7 @@ import { User } from "../shared/models/user";
 import { RouterExtensions } from "nativescript-angular";
 import { ActivityService } from "../shared/services/activity.service";
 import { appendZeroPrefix, dayOfWeekIdxToStr } from "~/app/shared/utils/conveniences";
+import { IActivityLog } from "../shared/models/activity";
 
 @Component({
   selector: "Home",
@@ -75,6 +76,29 @@ export class HomeComponent implements OnInit {
     return capitalCaseWorks.join(" ");
   }
 
+  logActivityTime(activityKey: string, time: string): void {
+    this.router.navigate([`log-generic/${activityKey}/${time}`], {
+      animated: true,
+      transition: {
+        duration: 200,
+        name: "slideTop",
+        curve: "linear"
+      }
+    });
+  }
+
+  isCompleted(logs: Array<IActivityLog>, time: string) {
+    const today = new Date();
+    const dFormat = today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+    if (logs[0] && logs[0].date === dFormat) {
+      const times = logs[0].times;
+
+      return times.indexOf(time) >= 0;
+    }
+
+    return false;
+  }
+
   /**
    * Redirects to the given route by clearing the routing history
    *
@@ -102,13 +126,15 @@ export class HomeComponent implements OnInit {
           activityData.times.forEach((time) => {
             const activityItem = {
               time,
-              activityName: activityData.activityName,
-              isCompleted: false // TODO: compute the "isCompleted" based on the logs
+              activityKey: activityData.activityKey,
+              activityName: activityData.activityName
             };
-            if (timeActivities[time]) {
-              timeActivities[time].push(activityItem);
-            } else {
-              timeActivities[time] = [activityItem];
+            if (!this.isCompleted(activityData.logs, time)) {
+              if (timeActivities[time]) {
+                timeActivities[time].push(activityItem);
+              } else {
+                timeActivities[time] = [activityItem];
+              }
             }
           });
         }

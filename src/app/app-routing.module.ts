@@ -6,6 +6,7 @@ import { TourComponent } from "./tour/tour.component";
 import { LoginComponent } from "./login/login.component";
 import { HidrateComponent } from "./newactivity/hidrate/hidrate.component";
 import { GenericActivityComponent } from "./newactivity/generic/generic-activity.component";
+import { DoGenericActivityComponent } from "./home/generic-activity/do-generic.component";
 
 const routes: Routes = [
     { path: "", redirectTo: "/tabs/default", pathMatch: "full" },
@@ -13,7 +14,8 @@ const routes: Routes = [
     { path: "tour", component: TourComponent },
     { path: "tabs", loadChildren: "~/app/tabs/tabs.module#TabsModule" },
     { path: "hidrate", component: HidrateComponent },
-    { path: "activity/:activityname", component: GenericActivityComponent }
+    { path: "activity/:activityname", component: GenericActivityComponent },
+    { path: "log-generic/:activitykey/:time", component: DoGenericActivityComponent }
 ];
 
 @NgModule({
