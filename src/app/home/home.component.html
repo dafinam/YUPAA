@@ -22,8 +22,9 @@
           <Label [text]="militaryToDisplayTime(militaryTime)"></Label>
         </FlexboxLayout>
         <StackLayout class="Activity--List">
-          <GridLayout *ngFor="let activity of timeBasedActivities[militaryTime]" class="Activity--Item--Wrapper" columns="50, *">
-            <FlexboxLayout class="Activity--Item" flexDirection="row" alignItems="center" justifyContent="space-between" col="1" backgroundColor="#2274A5">
+          <GridLayout *ngFor="let activity of timeBasedActivities[militaryTime]" class="Activity--Item--Wrapper" columns="50, *" >
+            <FlexboxLayout class="Activity--Item" flexDirection="row" alignItems="center" justifyContent="space-between" col="1" backgroundColor="#2274A5"
+            (tap)="logActivityTime(activity.activityKey, activity.time)">
               <Label [text]="formatActivityName(activity.activityName)"></Label>
               <Image [src]="getActivityCompleteImage(activity)" width="25"></Image>
             </FlexboxLayout>
