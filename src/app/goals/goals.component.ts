@@ -1,12 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "Streak",
+  selector: "Goals",
   moduleId: module.id,
-  templateUrl: "./streak.component.html",
-  styleUrls: ["./streak.component.scss"]
+  templateUrl: "./goals.component.html",
+  styleUrls: ["./goals.component.scss"]
 })
-export class StreakComponent implements OnInit {
+export class GoalsComponent implements OnInit {
   constructor() {
     // Use the component constructor to inject providers.
   }

@@ -30,10 +30,10 @@ import { TabsComponent } from "./tabs.component";
             outlet: "newActivityTab"
           },
           {
-            path: "streak",
+            path: "goals",
             component: NSEmptyOutletComponent,
-            loadChildren: "~/app/streak/streak.module#StreakModule",
-            outlet: "streakTab"
+            loadChildren: "~/app/goals/goals.module#GoalsModule",
+            outlet: "goalsTab"
           },
           {
             path: "profile",

@@ -23,7 +23,7 @@ export class TabsComponent implements OnInit {
           homeTab: ["home"],
           socialTab: ["social"],
           newActivityTab: ["newactivity"],
-          streakTab: ["streak"],
+          goalsTab: ["goals"],
           profileTab: ["profile"]
         }
       }],

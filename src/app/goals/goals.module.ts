@@ -1,19 +1,19 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptCommonModule } from "nativescript-angular/common";
 
-import { StreakRoutingModule } from "./streak-routing.module";
-import { StreakComponent } from "./streak.component";
+import { GoalsRoutingModule } from "./goals-routing.module";
+import { GoalsComponent } from "./goals.component";
 
 @NgModule({
   imports: [
     NativeScriptCommonModule,
-    StreakRoutingModule
+    GoalsRoutingModule
   ],
   declarations: [
-    StreakComponent
+    GoalsComponent
   ],
   schemas: [
     NO_ERRORS_SCHEMA
   ]
 })
-export class StreakModule { }
+export class GoalsModule { }
