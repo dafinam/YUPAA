@@ -122,7 +122,7 @@ export class HomeComponent implements OnInit {
       for (const activity of this.loggedUser.activities) {
         const userActivityDocumentId = `${this.loggedUser.googleUserUid}_${activity.name}`;
         const activityData = await this.activityService.getActivity(userActivityDocumentId);
-        if (activityData.reminders.indexOf(dayOfWeekIdxToStr(d.getDay()))) {
+        if (activityData.reminders.indexOf(dayOfWeekIdxToStr(d.getDay())) > -1) {
           activityData.times.forEach((time) => {
             const activityItem = {
               time,
