@@ -4,7 +4,8 @@ import { User } from "../shared/models/user";
 import { RouterExtensions } from "nativescript-angular";
 import { ActivityService } from "../shared/services/activity.service";
 import { appendZeroPrefix, dayOfWeekIdxToStr } from "~/app/shared/utils/conveniences";
-import { IActivityLog } from "../shared/models/activity";
+import { IActivityLog, Activity } from "../shared/models/activity";
+import { ActivityStylingData } from "./shared/ActivityStylingData";
 
 @Component({
   selector: "Home",
@@ -18,12 +19,15 @@ export class HomeComponent implements OnInit {
   noActivities: boolean = false;
   timeBasedActivities: any;
   timeBasedActivityKeys: Array<string>  = [];
+  activityStylingData: ActivityStylingData;
 
   constructor(
     private userService: UserService,
     private activityService: ActivityService,
     private router: RouterExtensions
-  ) { }
+  ) {
+    this.activityStylingData = new ActivityStylingData();
+  }
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -54,16 +58,15 @@ export class HomeComponent implements OnInit {
     return militaryTime.substr(0, 2) + ":" + militaryTime.substr(2);
   }
 
-  getActivityCompleteImage(activity: any): string {
+  stylingData(activity: Activity) {
+    return this.activityStylingData.stylingData()[activity.activityKey];
+  }
+
+  isActivityOverdue(time: string): boolean {
     const date: Date = new Date();
     const nowMilitaryTime: string = appendZeroPrefix(date.getHours()) + appendZeroPrefix(date.getMinutes());
-    if (parseInt(nowMilitaryTime, 10) > parseInt(activity.time, 10) && activity.isCompleted) {
-      return "~/assets/images/icons/success.png";
-    } else if (parseInt(nowMilitaryTime, 10) > parseInt(activity.time, 10) && !activity.isCompleted) {
-      return "~/assets/images/icons/warning.png";
-    } else {
-      return "";
-    }
+
+    return parseInt(nowMilitaryTime, 10) > parseInt(time, 10);
   }
 
   formatActivityName(name: string): string {
