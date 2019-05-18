@@ -5,6 +5,7 @@ import { switchMap } from "rxjs/operators";
 import { ActivityService } from "~/app/shared/services/activity.service";
 import { UserService } from "~/app/shared/services/user.service";
 import { IActivityLog, Activity } from "~/app/shared/models/activity";
+import { ActivityStylingData } from "../shared/ActivityStylingData";
 
 @Component({
   moduleId: module.id,
@@ -13,30 +14,7 @@ import { IActivityLog, Activity } from "~/app/shared/models/activity";
   styleUrls: ["./do-generic.component.scss"]
 })
 export class DoGenericActivityComponent implements OnInit, OnDestroy {
-  activityStylingData: any = {
-    yupaa_hidrate: {
-      pageBackground: "#59D2FE",
-      btnBorderColor: "#FFFFFF",
-      btnMainColor: "#FE5F55",
-      icon: "~/assets/images/icons/drop.png",
-      activityTitle: "Drink Water"
-    },
-    yupaa_healthy_breakfast: {
-      pageBackground: "#F0B67F",
-      btnBorderColor: "#FFFFFF",
-      btnMainColor: "#FE5F55",
-      icon: "~/assets/images/icons/breakfast-white.png",
-      activityTitle: "Eat Breakfast"
-    },
-    yupaa_stretching: {
-      pageBackground: "#C7EFCF",
-      btnBorderColor: "#FFFFFF",
-      btnMainColor: "#FE5F55",
-      icon: "~/assets/images/icons/stretching-white.png",
-      activityTitle: "Stretch"
-    }
-  };
-
+  activityStylingData: ActivityStylingData;
   showCompleteAnimation: boolean = false;
   isLoading: boolean = false;
   canNavigateHome: boolean = false;
@@ -54,10 +32,12 @@ export class DoGenericActivityComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private router: RouterExtensions,
     private pageRoute: PageRoute
-  ) {}
+  ) {
+    this.activityStylingData = new ActivityStylingData();
+  }
 
   get stylingData() {
-    return this.activityStylingData[this.activityKey];
+    return this.activityStylingData.stylingData()[this.activityKey];
   }
 
   get hasDuration() {
