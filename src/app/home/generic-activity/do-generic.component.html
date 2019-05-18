@@ -1,9 +1,9 @@
-<GridLayout class="page page-content" rows="50 *" [backgroundColor]="stylingData.pageBackground" *ngIf="!isLoading">
+<GridLayout class="page page-content" rows="50 * 50" [backgroundColor]="stylingData.pageBackground" *ngIf="!isLoading">
   <FlexboxLayout class="Header" row="0" flexDirection="row" alignItems="center" justifyContent="flex-start" *ngIf="!showCompleteAnimation">
-    <Image class="Close--Btn" src="~/assets/images/icons/arrow-left-white.png" width="20" (tap)="goBack()"></Image>
+    <Image class="Close--Btn" src="~/assets/images/icons/arrow-left-white.png" width="20" (tap)="navigateHome()"></Image>
   </FlexboxLayout>
 
-  <GridLayout class="Content" rows="4* * 100" row="1" *ngIf="!showCompleteAnimation">
+  <GridLayout class="Content" rows="4* * 100" row="1" rowSpan="2" *ngIf="!showCompleteAnimation">
     <FlexboxLayout class="Icon--Title" row="0" flexDirection="column" alignItems="center" justifyContent="center">
       <Image class="Activity-Icon" [src]="stylingData.icon"></Image>
       <Label class="roboto-regular" [text]="stylingData.activityTitle"></Label>
@@ -16,7 +16,8 @@
   
     <GridLayout columns="* *" row="2">
       <FlexboxLayout class="Streak" col="0" flexDirection="row" alignItems="center" justifyContent="center">
-        <Label class="roboto-regular" text="Streak nr 3"></Label>
+        <Label class="roboto-thin" text="Today"></Label>
+        <Label class="roboto-regular tasknr" [text]="dailyActivityTaskNr"></Label>
       </FlexboxLayout>
       <GridLayout class="Control" rows="*, auto" columns="*" col="1">
         <StackLayout [backgroundColor]="stylingData.btnBorderColor" rowSpan="2" row="0" class="Btn--Border"></StackLayout>
@@ -28,11 +29,20 @@
     </GridLayout>
   </GridLayout>
 
-  <FlexboxLayout class="CompleteTask--Wrapper" row="2" flexDirection="row" alignItems="center" justifyContent="center" *ngIf="showCompleteAnimation">
+  <FlexboxLayout class="CompleteTask--Wrapper" row="1" flexDirection="row" alignItems="center" justifyContent="center" *ngIf="showCompleteAnimation">
     <StackLayout>
       <Image class="RewardIcon" src="~/assets/images/icons/achievement.png"></Image>
       <Label class="robot-bold complete-title" text="Well Done!" textWrap="true"></Label>
-      <Label class="robot-regular complete-streak" text="Streak nr 3 on Hidrate 🚀" textWrap="true"></Label>
+      <FlexboxLayout class="StreakDays" flexDirection="row" alignItems="center" justifyContent="center">
+        <FlexboxLayout class="StreakDay-Wrapper" *ngFor="let item of completedStreakDays" flexDirection="column" alignItems="center" justifyContent="center">
+          <Label [text]="item"></Label>
+        </FlexboxLayout>
+      </FlexboxLayout>
+      <Label class="robot-regular complete-streak" [text]="'Streak nr ' + (completedStreakDays.length + 1) + ' on ' + activityData.activityName + ' 🚀'" textWrap="true"></Label>
     </StackLayout>
   </FlexboxLayout>
+
+  <StackLayout class="Footer" row="2" *ngIf="canNavigateHome" (tap)="navigateHome()">
+    <Label class="robot-bold" text="Tap to continue"></Label>
+  </StackLayout>
 </GridLayout>

@@ -37,9 +37,19 @@
   }
 
   .Streak {
+    opacity: 0;
+    animation-name: slide-in-fwd-center;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
     Label {
-      font-size: 18;
+      font-size: 14;
       color: $behance-white;
+    }
+    .tasknr {
+      margin-left: 10;
+      font-size: 16;
+      letter-spacing: 0.3;
     }
   }
 
@@ -81,15 +91,44 @@
     width: 40%;
     opacity: 0;
     animation-name: slide-in-fwd-center;
-    animation-duration: 1s;
-    animation-delay: 1.5s;
+    animation-duration: 1.5s;
     animation-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550);
     animation-fill-mode: forwards;
   }
+
+  .StreakDays {
+    margin-top: 10;
+    margin-bottom: 10;
+    opacity: 0;
+    animation-delay: 1s;
+    animation-name: scale-in-hor-left;
+    animation-duration: 2s;
+    animation-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550);
+    animation-fill-mode: forwards;
+
+    .StreakDay-Wrapper {
+      width: 30;
+      height: 30;
+      background-color: white;
+      border-radius: 30;
+      padding: 10;
+      margin-left: 10;
+      Label {
+        font-size: 12;
+        color: $behance-blue-dark;
+      }
+    }
+  }
+
   .complete-title, .complete-streak {
     text-align: center;
     color: $behance-white;
     opacity: 0;
+  }
+
+  .complete-title {
+    font-size: 20;
+    margin-top: 20;
     animation-name: slide-in-fwd-center;
     animation-duration: 1s;
     animation-delay: 1s;
@@ -97,40 +136,31 @@
     animation-fill-mode: forwards;
   }
 
-  .complete-title {
-    font-size: 20;
-    margin-top: 20;
-  }
-
   .complete-streak {
     font-size: 14;
     margin-top: 5;
+    animation-name: slide-in-fwd-center;
+    animation-duration: 1s;
+    animation-delay: 3s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-fill-mode: forwards;
   }
 }
 
-@-webkit-keyframes jello-horizontal {
-  0% {
-    transform: scale3d(1, 1, 1);
-  }
-  30% {
-    transform: scale3d(1.25, 0.75, 1);
-  }
-  40% {
-    transform: scale3d(0.75, 1.25, 1);
-  }
-  50% {
-    transform: scale3d(1.15, 0.85, 1);
-  }
-  65% {
-    transform: scale3d(0.95, 1.05, 1);
-  }
-  75% {
-    transform: scale3d(1.05, 0.95, 1);
-  }
-  100% {
-    transform: scale3d(1, 1, 1);
+.Footer {
+  text-align: center;
+  opacity: 0;
+  animation-delay: 5s;
+  animation-name: slide-in-fwd-center;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0.680, -0.550, 0.265, 1.550);
+  animation-fill-mode: forwards;
+  Label {
+    font-size: 20;
+    color: $behance-white;
   }
 }
+
 @keyframes jello-horizontal {
   0% {
     transform: scale3d(1, 1, 1);
@@ -155,44 +185,33 @@
   }
 }
 
-@-webkit-keyframes scale-in-br {
-  0% {
-    transform: scaleX(0);
-    opacity: 1;
-  }
-  100% {
-    transform: scaleX(1);
-    opacity: 1;
-  }
-}
 @keyframes scale-in-br {
-  0% {
+  from {
     transform: scaleX(0);
     opacity: 1;
   }
-  100% {
+  to {
     transform: scaleX(1);
     opacity: 1;
   }
 }
 
-@-webkit-keyframes  slide-in-fwd-center {
-  0% {
+@keyframes  slide-in-fwd-center {
+  from {
     transform: translateZ(-1400px);
     opacity: 0;
   }
-  100% {
+  to {
     transform: translateZ(0);
     opacity: 1;
   }
 }
-@keyframes  slide-in-fwd-center {
-  0% {
-    transform: translateZ(-1400px);
-    opacity: 0;
+
+@keyframes scale-in-hor-left {
+  from { opacity: 0;
+    transform: translateX(-100);
   }
-  100% {
-    transform: translateZ(0);
-    opacity: 1;
+  to { opacity: 1;
+    transform: translateX(0);
   }
 }
