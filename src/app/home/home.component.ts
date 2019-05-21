@@ -29,7 +29,23 @@ export class HomeComponent implements OnInit {
     this.activityStylingData = new ActivityStylingData();
   }
 
+  get userGreet() {
+    if (this.loggedUser) {
+      const curHr = new Date().getHours()
+      let greet = "Good evening";
+      if (curHr < 12) {
+        greet = "Good morning";
+      } else if (curHr < 18) {
+        greet = "Good afternoon";
+      }
+      return `${greet}, ${this.loggedUser.nickname}!`;
+    }
+
+    return "";
+  }
+
   ngOnInit(): void {
+    console.log('----- Loading Home');
     this.isLoading = true;
     /* Check if the user is logged in by calling isUserLoggedIn on userService */
     this.userService.isUserLoggedIn()

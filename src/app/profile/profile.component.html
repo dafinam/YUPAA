@@ -46,12 +46,12 @@
 
     <StackLayout class="User-Attributes" row="2">
       <StackLayout>
-        <Label class="roboto-thin User-Parameter-Val" text="Dafina"></Label>
+        <Label class="roboto-thin User-Parameter-Val" [text]="googleUser.displayName"></Label>
         <StackLayout class="hr" ></StackLayout>
         <Label class="roboto-regular Input-Caption" text="Nickname"></Label>
       </StackLayout>
       <StackLayout>
-        <Label class="roboto-thin User-Parameter-Val" text="dafmarku@gmail.com"></Label>
+        <Label class="roboto-thin User-Parameter-Val" [text]="googleUser.email"></Label>
         <StackLayout class="hr"></StackLayout>
         <Label class="roboto-regular Input-Caption" text="Email"></Label>
       </StackLayout>

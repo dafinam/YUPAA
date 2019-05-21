@@ -3,7 +3,7 @@
   <FlexboxLayout *ngIf="!isLoading" row="0" flexDirection="row" alignItems="center" justifyContent="space-between"
     class="action-bar-custom">
     <StackLayout class="Home-Greeting">
-      <Label class="roboto-bold" text="Good evening, Dafina!" textWrap="true"></Label>
+      <Label class="roboto-bold" [text]="userGreet" textWrap="true"></Label>
     </StackLayout>
   </FlexboxLayout>
   <!-- THE ACTION/PAGE-TITLE BAR -->
