@@ -1,1 +1,168 @@
 @import '../app.component';
+
+
+.Tab--Items {
+  margin-left: 5%;
+  margin-right: 5%;
+  .Social--TabItem {
+    Label {
+      font-family: 'Roboto-Regular';
+      font-weight: 500;
+      color: #D2D5D8;
+    }
+    Button {
+      visibility: hidden;
+      margin-top: 5;
+    }
+  }
+  .Active {
+    Label {
+      color: #000000;
+    }
+    Button {
+      visibility: visible;
+      background: $rose-gardient;
+      border-radius: 16px;
+      opacity: 0;
+      animation-name: bounceIn;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+      animation-delay: 0.5s;
+    }
+  }
+}
+
+.Social--Content {
+  visibility: hidden;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
+
+  .User-Avatar {
+    width: 40;
+    height: 40;
+    border-radius: 100;
+    border-color: #CFD0D5;
+    border-width: 1;
+  }
+  .Like-Btn {
+    width: 15;
+  }
+  .Sharably-Btn {
+    width: 15;
+    margin-left: 5;
+  }
+
+  /******* Feed Tab ********/
+  .Feed-Item {
+    margin-bottom: 20;
+    .Feed-Owner {
+      .User-Data {
+        width: 70%;
+        .User-Name {
+          margin-left: 15;
+          font-size: 16;
+        }
+      }
+      .Post-Time {
+        font-size: 12;
+        color: #CFD0D5;
+      }
+    }
+
+    .Feed-Card {
+      width: 100%;
+      height: 120;
+      background-color: $behance-white;
+      padding: 20;
+
+      .Card-Grid {
+        margin: 20 10 5 10;
+        .Activity--Content {
+          .Activity-Desc {
+            font-size: 16;
+          }
+          .Like-Count {
+            font-size: 12;
+            margin-right: 5;
+            color: #CFD0D5;
+          }
+        }
+        .Activity--Frequency {
+          width: 100%;
+
+          .WeekDay--Item {
+            font-size: 10;
+            width: 30;
+            height: 30;
+            background-color: $behance-white;
+            color: #CFD0D5;
+          }
+          .Streak--Activity {
+            font-size: 12;
+            color: #CFD0D5;
+          }
+        }
+      }
+    }
+  }
+  /******* Feed Tab ********/
+
+  /******* Discovery Tab ********/
+  .Search-Container {
+    margin-bottom: 20;
+    border-bottom-width: 1;
+    border-bottom-color: #D2D5D8;
+
+    Image {
+      opacity: 0.5;
+    }
+    .input {
+      width: 80%;
+      background-color: #ffffff;
+      text-decoration: none;
+      font-size: 18;
+      text-align: left;
+      flex-grow: 2;
+    }
+  }
+
+  .User-List {
+    .Yupaa-User {
+      width: 100%;
+      height: 60;
+      border-bottom-width: 1;
+      border-bottom-color: rgb(233, 233, 233);
+      .User-Info {
+        text-align: left;
+        margin-left: 15;
+        margin-top: 10;
+
+        .User-Followers {
+          font-size: 12;
+          color: #D2D5D8;
+        }
+      }
+
+      .Follow-Button {
+        width: 60;
+        height: 30;
+        background-color: #FE88B3;
+        border-radius: 5;
+      }
+      .Follow-Button.Following {
+        background-color: #EEF0F4;
+      }
+
+      .Follow-Button-Icon {
+        width: 15;
+        height: 15;
+      }
+    }
+  }
+  /******* Discovery Tab ********/
+}
+
+.Enabled {
+  visibility: visible;
+}

@@ -1,34 +1,63 @@
-<GridLayout class="page page-content"rows="80 *">
+<GridLayout class="page page-content" rows="80 *">
   <!-- THE ACTION/PAGE-TITLE BAR -->
   <FlexboxLayout *ngIf="!isLoading" row="0" flexDirection="row" alignItems="center" justifyContent="space-between" class="action-bar-custom">
-    <StackLayout>
-      <Label class="title" text="Profile"></Label>
-    </StackLayout>
-    <StackLayout>
-      <Image src="~/assets/images/icons/logout.png" class="logout-btn" (tap)="logOut()"></Image>
-    </StackLayout>
+    <Label class="title" text="Profile"></Label>
   </FlexboxLayout>
   <!-- THE ACTION/PAGE-TITLE BAR -->
 
-  <!-- <StackLayout row="1">
-    
-  </StackLayout> -->
-  <ScrollView *ngIf="!isLoading" orientation="vertical" row="1">
-    <GridLayout rows="auto, auto, auto, auto,auto" columns="*">
-      <Image row="0" col="0" [src]="userImageUrl" stretch="aspectFill" class="profilePic"></Image>
-      <Label row="1" col="0" [text]="fullname" class="title-profile" textAlignment="center"></Label>
+  <GridLayout row="1" class="Page-Content" columns="*" rows="* 2* 2* *">
+    <FlexboxLayout row="0" class="Profile-Header" flexDirection="row" alignItems="center" justifyContent="space-between">
+      <FlexboxLayout class="Avatar--Border" alignItems="center" justifyContent="center">
+        <Image row="0" col="0" [src]="userImageUrl" stretch="aspectFill" class="Avatar"></Image>
+      </FlexboxLayout>
+      <FlexboxLayout class="User-Stats" flexDirection="column" alignItems="flex-end" justifyContent="center">
+        <Label text="Followers" class="roboto-thin Title"></Label>
+        <Label text="24" class="roboto-regular Number"></Label>
+      </FlexboxLayout>
+    </FlexboxLayout>
 
-      <GridLayout row="3" col="0" rows="auto,auto" columns="*,*,*" class="content-followers">
-        <Label row="0" col="0" text="6" class="followersTxtValue"></Label>
-        <Label row="1" col="0" text="Posts" class="followersTxt"></Label>
-  
-        <Label row="0" col="1" text="2300" class="followersTxtValue"></Label>
-        <Label row="1" col="1" text="Followers" class="followersTxt"></Label>
-  
-        <Label row="0" col="2" text="400" class="followersTxtValue"></Label>
-        <Label row="1" col="2" text="Following" class="followersTxt"></Label>
-      </GridLayout>
+    <GridLayout class="User-Activities" row="1" rows="30 *">
+      <StackLayout class="Activities-Title" row="0">
+        <Label class="roboto-regular" text="Activities"></Label>
+      </StackLayout>
+      <ScrollView orientation="horizontal" row="1">
+        <StackLayout orientation="horizontal" class="Activity-Items-Wrapper">
+          <FlexboxLayout class="Activity-Item" flexDirection="column" alignItems="center" justifyContent="center">
+            <StackLayout class="Activity-Icon-Wrapper" backgroundColor="#59D2FE">
+              <Image class="Icon" src="~/assets/images/icons/drop.png"></Image>
+            </StackLayout>
+            <Label class="roboto-regular Activity-Name" text="Hidrate"></Label>
+          </FlexboxLayout>
+          <FlexboxLayout class="Activity-Item" flexDirection="column" alignItems="center" justifyContent="center">
+            <StackLayout class="Activity-Icon-Wrapper" backgroundColor="#C7EFCF">
+              <Image class="Icon" src="~/assets/images/icons/stretching-white.png"></Image>
+            </StackLayout>
+            <Label class="roboto-regular Activity-Name" text="Stretching"></Label>
+          </FlexboxLayout>
+          <FlexboxLayout class="Activity-Item" flexDirection="column" alignItems="center" justifyContent="center">
+            <StackLayout class="Activity-Icon-Wrapper" backgroundColor="#F0B67F">
+              <Image class="Icon" src="~/assets/images/icons/breakfast-white.png"></Image>
+            </StackLayout>
+            <Label class="roboto-regular Activity-Name" text="Breakfast"></Label>
+          </FlexboxLayout>
+        </StackLayout>
+      </ScrollView>
     </GridLayout>
-  </ScrollView>
-  <Loading *ngIf="isLoading"></Loading>
+
+    <StackLayout class="User-Attributes" row="2">
+      <StackLayout>
+        <Label class="roboto-thin User-Parameter-Val" text="Dafina"></Label>
+        <StackLayout class="hr" ></StackLayout>
+        <Label class="roboto-regular Input-Caption" text="Nickname"></Label>
+      </StackLayout>
+      <StackLayout>
+        <Label class="roboto-thin User-Parameter-Val" text="dafmarku@gmail.com"></Label>
+        <StackLayout class="hr"></StackLayout>
+        <Label class="roboto-regular Input-Caption" text="Email"></Label>
+      </StackLayout>
+    </StackLayout>
+    <StackLayout class="logout-btn-wrapper" row="3">
+      <Button class="logout-btn" text="Log Out" textTransform="none" (tap)="logOut()"></Button>
+    </StackLayout>
+  </GridLayout>
 </GridLayout>

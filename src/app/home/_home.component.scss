@@ -1,5 +1,13 @@
 @import '../app.component';
 
+.Home-Greeting {
+  width: 50%;
+  height: 80;
+  Label {
+    font-size: 25%;
+    letter-spacing: 0.01;
+  }
+}
 .Activity--Wrapper {
   text-align: center;
 

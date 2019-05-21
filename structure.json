@@ -271,4 +271,14 @@
       ]
     }
   ]
+  "user_goals": [
+    {
+      "ushuhfuahdiausdhasiudha": {
+        "goal_name": "Finish app by June 2019",
+        "due_date": "01/06/2019",
+        "added_on": "21/05/2019",
+        "status": ["active", "acomplished", "failed"]
+      }
+    }
+  ]
 }

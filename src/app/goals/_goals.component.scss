@@ -1,1 +1,72 @@
 @import '../app.component';
+
+
+.Activity--Wrapper {
+  text-align: center;
+
+  .Day--Title {
+    margin-bottom: 10;
+    .Day-h1 {
+      font-size: 18;
+      font-weight: 500;
+      margin-bottom: 3;
+      opacity: 0;
+      animation-name: bounceIn;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+    }
+    .hr {
+      background: $rose-gardient;
+      border-radius: 16px;
+      opacity: 0;
+      animation-name: bounceIn;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+      animation-delay: 0.5s;
+    }
+  }
+
+
+  .Goal--Card {
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 10;
+    height: 150;
+    border-radius: 15;
+
+    .Goal--Info {
+      width: 100%;
+      height: 50%;
+      text-align: left;
+      margin-top: 20;
+      margin-left: 20;
+
+      .Title {
+        color: $behance-white;
+      }
+      .Target--Date {
+        margin-top: 10;
+        color: rgba($color: #FFFFFF, $alpha: 0.5);
+        font-size: 14;
+      }
+    }
+
+    .Goal--Progress {
+      margin-bottom: 20;
+      margin-left: 20;
+      margin-right: 20;
+      height: 20%;
+      width: 90%;
+
+      .Percentage {
+        font-size: 14;
+        margin-bottom: 10;
+        color: $behance-white;
+      }
+      .ProgressBar {
+        color: white;
+        background-color: rgba($color: #FFFFFF, $alpha: 0.2);
+      }
+    }
+  }
+}

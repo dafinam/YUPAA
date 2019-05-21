@@ -1,13 +1,55 @@
 <GridLayout class="page page-content"rows="80 *">
   <!-- THE ACTION/PAGE-TITLE BAR -->
   <FlexboxLayout row="0" flexDirection="row" alignItems="center" justifyContent="space-between" class="action-bar-custom">
-    <StackLayout>
-      <Label class="title" text="Goals"></Label>
-    </StackLayout>
+    <Label class="title" text="Goals"></Label>
+    <Image src="~/assets/images/icons/plus-black.png" class="logout-btn" (tap)="addNewGoal()"></Image>
   </FlexboxLayout>
   <!-- THE ACTION/PAGE-TITLE BAR -->
 
-  <StackLayout row="1">
-    <Label class="page-placeholder" text="<!-- This is the Goals page -->"></Label>
-  </StackLayout>
+  <ScrollView orientation="vertical" row="1">
+    <StackLayout class="Activity--Wrapper">
+      <StackLayout class="Day--Title">
+        <Label class="Day-h1" text="Ongoing Goals"></Label>
+        <Button width="30" height="5" class="hr"></Button>
+      </StackLayout>
+  
+      <!-- A time of the day -->
+      <FlexboxLayout class="Goal--Card" flexDirection="column" alignItems="center" justifyContent="space-between" backgroundColor="#6A9BEB">
+        <StackLayout class="Goal--Info">
+          <Label class="roboto-bold Title" text="Read a book"></Label>
+          <Label class="roboto-regular Target--Date" text="Target date: 30/12/2019"></Label>
+        </StackLayout>
+        <StackLayout class="Goal--Progress">
+          <Label class="roboto-bold Percentage" text="53%"></Label>
+          <Progress (loaded)="onProgressBarLoaded($event, 53)" class="ProgressBar">
+          </Progress>
+        </StackLayout>
+      </FlexboxLayout>
+
+      <FlexboxLayout class="Goal--Card" flexDirection="column" alignItems="center" justifyContent="space-between" backgroundColor="#A997DF">
+        <StackLayout class="Goal--Info">
+          <Label class="roboto-bold Title" text="Complete Norwegian Course"></Label>
+          <Label class="roboto-regular Target--Date" text="Target date: 30/12/2019"></Label>
+        </StackLayout>
+        <StackLayout class="Goal--Progress">
+          <Label class="roboto-bold Percentage" text="10%"></Label>
+          <Progress (loaded)="onProgressBarLoaded($event, 10)" class="ProgressBar">
+          </Progress>
+        </StackLayout>
+      </FlexboxLayout>
+      <FlexboxLayout class="Goal--Card" flexDirection="column" alignItems="center" justifyContent="space-between" backgroundColor="#6A9BEB">
+        <StackLayout class="Goal--Info">
+          <Label class="roboto-bold Title" text="Lose 10kg"></Label>
+          <Label class="roboto-regular Target--Date" text="Target date: 30/12/2019"></Label>
+        </StackLayout>
+        <StackLayout class="Goal--Progress">
+          <Label class="roboto-bold Percentage" text="90%"></Label>
+          <Progress (loaded)="onProgressBarLoaded($event, 90)" class="ProgressBar">
+          </Progress>
+        </StackLayout>
+      </FlexboxLayout>
+      <!-- A time of the day -->
+  
+    </StackLayout>
+  </ScrollView>
 </GridLayout>

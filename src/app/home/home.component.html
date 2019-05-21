@@ -1,14 +1,14 @@
-<GridLayout class="page page-content" rows="80 *">
+<GridLayout class="page page-content" rows="100 *">
   <!-- THE ACTION/PAGE-TITLE BAR -->
   <FlexboxLayout *ngIf="!isLoading" row="0" flexDirection="row" alignItems="center" justifyContent="space-between"
     class="action-bar-custom">
-    <StackLayout>
-      <Label class="title" text="Home"></Label>
+    <StackLayout class="Home-Greeting">
+      <Label class="roboto-bold" text="Good evening, Dafina!" textWrap="true"></Label>
     </StackLayout>
   </FlexboxLayout>
   <!-- THE ACTION/PAGE-TITLE BAR -->
 
-  <ScrollView orientation="vertical" row="1">
+  <ScrollView row="1">
     <StackLayout class="Activity--Wrapper">
       <StackLayout class="Day--Title">
         <Label class="Day-h1" text="Today"></Label>

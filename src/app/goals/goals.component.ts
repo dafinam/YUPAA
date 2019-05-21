@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Progress } from "tns-core-modules/ui/progress";
 
 @Component({
   selector: "Goals",
@@ -13,5 +14,12 @@ export class GoalsComponent implements OnInit {
 
   ngOnInit(): void {
     // Use the "ngOnInit" handler to initialize data for the view.
+  }
+
+  onProgressBarLoaded(args: any, percentage: number) {
+    const myProgressBar = <Progress>args.object;
+
+    myProgressBar.value = percentage;
+    myProgressBar.maxValue = 100;
   }
 }

@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
     "nativescript-angular": "~7.2.0",
+    "nativescript-cardview": "^3.1.1",
     "nativescript-checkbox": "^3.0.3",
     "nativescript-datetimepicker": "^1.0.2",
     "nativescript-numeric-keyboard": "^4.2.2",

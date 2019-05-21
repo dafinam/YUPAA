@@ -8,6 +8,168 @@
   <!-- THE ACTION/PAGE-TITLE BAR -->
 
   <StackLayout row="1">
-    <Label class="page-placeholder" text="<!-- This is the SOCIAL page -->"></Label>
+    <GridLayout rows="auto *" columns="*" class="card">
+      <FlexboxLayout class="Tab--Items" row="0" flexDirection="row" alignItems="center" justifyContent="space-between">
+        <StackLayout #newsFeed class="Social--TabItem Active" (tap)="showTab('newsFeed')">
+          <Label text="News Feed"></Label>
+          <Button width="60" height="5" class="hr"></Button>
+        </StackLayout>
+        <StackLayout #discover  class="Social--TabItem" (tap)="showTab('discover')">
+          <Label text="Discover"></Label>
+          <Button width="60" height="5" class="hr"></Button>
+        </StackLayout>
+        <StackLayout #personalFeed  class="Social--TabItem" (tap)="showTab('personalFeed')">
+          <Label text="My Feed"></Label>
+          <Button width="60" height="5" class="hr"></Button>
+        </StackLayout>
+      </FlexboxLayout>
+      
+      <!-- Tab Contents - NewsFeed -->
+      <ScrollView orientation="vertical" row="1">
+        <StackLayout #newsFeedContent  class="Social--Content">
+          <StackLayout class="Feed-Item">
+            <FlexboxLayout class="Feed-Owner" flexDirection="row" alignItems="center" justifyContent="space-between">
+              <StackLayout class="User-Data" orientation="horizontal">
+                <Image class="User-Avatar" src="~/assets/images/businesswoman.jpeg" stretch="aspectFill"></Image>
+                <Label class="roboto-regular User-Name" text="Dafina Marku"></Label>
+              </StackLayout>
+              <Label class="roboto-regular Post-Time" text="Today"></Label>
+            </FlexboxLayout>
+            <CardView class="Feed-Card" margin="10" shadowRadius="7" shadowOpacity="0.1" elevation="7" radius="7">
+              <GridLayout class="Card-Grid" rows="* 40">
+                <StackLayout row="0" class="Activity--Content">
+                  <FlexboxLayout flexDirection="row" alignItems="center" justifyContent="space-between">
+                    <Label class="roboto-regular Activity-Desc" text="Started Hidrate Activity"></Label>
+                    <StackLayout orientation="horizontal">
+                      <Label class="roboto-regular Like-Count" text="21"></Label>
+                      <Image class="Like-Btn" src="~/assets/images/icons/heart-fill.png"></Image>
+                    </StackLayout>
+                  </FlexboxLayout>
+                </StackLayout>
+                <FlexboxLayout row="1" class="Activity--Frequency" flexDirection="row" alignItems="center" justifyContent="center">
+                  <Label text="Mon" class="WeekDay--Item"></Label>
+                  <Label text="Tue" class="WeekDay--Item"></Label>
+                  <Label text="Wed" class="WeekDay--Item"></Label>
+                </FlexboxLayout>
+              </GridLayout>
+            </CardView>
+          </StackLayout>
+          <StackLayout class="Feed-Item">
+            <FlexboxLayout class="Feed-Owner" flexDirection="row" alignItems="center" justifyContent="space-between">
+              <StackLayout class="User-Data" orientation="horizontal">
+                <Image class="User-Avatar" src="~/assets/images/businesswoman.jpeg" stretch="aspectFill"></Image>
+                <Label class="roboto-regular User-Name" text="Mary Jane"></Label>
+              </StackLayout>
+              <Label class="roboto-regular Post-Time" text="20min ago"></Label>
+            </FlexboxLayout>
+            <CardView class="Feed-Card" margin="10" shadowRadius="7" shadowOpacity="0.1" elevation="7" radius="7">
+              <GridLayout class="Card-Grid" rows="* 40">
+                <StackLayout row="0" class="Activity--Content">
+                  <FlexboxLayout flexDirection="row" alignItems="center" justifyContent="space-between">
+                    <Label class="roboto-regular Activity-Desc" text="Reached streak nr 21"></Label>
+                    <StackLayout orientation="horizontal">
+                      <Label class="roboto-regular Like-Count" text="21"></Label>
+                      <Image class="Like-Btn" src="~/assets/images/icons/heart-nofill.png"></Image>
+                    </StackLayout>
+                  </FlexboxLayout>
+                </StackLayout>
+                <FlexboxLayout row="1" class="Activity--Frequency" flexDirection="row" alignItems="center" justifyContent="center">
+                  <Label text="Hidrate Activity" class="Streak--Activity"></Label>
+                </FlexboxLayout>
+              </GridLayout>
+            </CardView>
+          </StackLayout>
+        </StackLayout>
+      </ScrollView>
+      <!-- Tab Contents - NewsFeed -->
+
+      <!-- Tab Contents - Discovery -->
+      <StackLayout #discoveryContent row="1" class="Social--Content">
+        <FlexboxLayout class="Search-Container" flexDirection="row" alignItems="center" justifyContent="space-between">
+          <TextView editable="true" v-model="searchQuery" hint="Search users" class="input extra-bold" ref="searchBar" maxLength="20" autocorrect="false">
+          </TextView>
+          <Image src="~/assets/images/icons/search-red.png" height="20" minWidth="20" margin="0 12" ></Image>
+        </FlexboxLayout>
+        <ScrollView orientation="vertical">
+          <StackLayout class="User-List">
+            <GridLayout columns="* 5* *" rows="*" class="Yupaa-User">
+              <Image row="0" col="0" class="User-Avatar" src="~/assets/images/businesswoman.jpeg" stretch="aspectFill"></Image>
+              <StackLayout class="User-Info" row="0" col="1">
+                <Label class="roboto-regular User-Name" text="Mary Jane"></Label>
+                <Label class="roboto-regular User-Followers" text="34 Followers"></Label>
+              </StackLayout>
+              <FlexboxLayout row="0" col="2" class="Follow-Button" alignItems="center" justifyContent="center">
+                <Image class="Follow-Button-Icon" src="~/assets/images/icons/plus-white.png"></Image>
+              </FlexboxLayout>
+            </GridLayout>
+            <GridLayout columns="* 5* *" rows="*" class="Yupaa-User">
+              <Image row="0" col="0" class="User-Avatar" src="~/assets/images/businesswoman.jpeg" stretch="aspectFill"></Image>
+              <StackLayout class="User-Info" row="0" col="1">
+                <Label class="roboto-regular User-Name" text="Dafina Marku"></Label>
+                <Label class="roboto-regular User-Followers" text="134 Followers"></Label>
+              </StackLayout>
+              <FlexboxLayout row="0" col="2" class="Follow-Button Following" alignItems="center" justifyContent="center">
+                <Image class="Follow-Button-Icon" src="~/assets/images/icons/check-white.png"></Image>
+              </FlexboxLayout>
+            </GridLayout>
+          </StackLayout>
+        </ScrollView>
+      </StackLayout>
+      <!-- Tab Contents - Discovery -->
+
+      <!-- Tab Contents - PersonalFeed -->
+      <StackLayout #personalFeedContent row="1" class="Social--Content">
+        <StackLayout class="Feed-Item">
+          <CardView class="Feed-Card" margin="10" shadowRadius="7" shadowOpacity="0.1" elevation="7" radius="7">
+            <GridLayout class="Card-Grid" rows="* 30">
+              <StackLayout row="0" class="Activity--Content">
+                <FlexboxLayout flexDirection="row" alignItems="center" justifyContent="space-between">
+                  <Label class="roboto-regular Activity-Desc" text="Started Stretching Activity"></Label>
+                  <StackLayout orientation="horizontal">
+                    <Label class="roboto-regular Like-Count" text="21"></Label>
+                    <Image class="Like-Btn" src="~/assets/images/icons/heart-fill.png"></Image>
+                  </StackLayout>
+                </FlexboxLayout>
+              </StackLayout>
+              <FlexboxLayout row="1" class="Activity--Frequency" flexDirection="row" alignItems="center"
+                justifyContent="space-between">
+                <Label text="3h ago" class="Streak--Activity"></Label>
+                <StackLayout orientation="horizontal">
+                  <Label text="Public" class="Streak--Activity"></Label>
+                  <Image class="Sharably-Btn" src="~/assets/images/icons/unlocked-grey.png"></Image>
+                </StackLayout>
+              </FlexboxLayout>
+            </GridLayout>
+          </CardView>
+        </StackLayout>
+        <StackLayout class="Feed-Item">
+          <CardView class="Feed-Card" margin="10" shadowRadius="7" shadowOpacity="0.1" elevation="7" radius="7">
+            <GridLayout class="Card-Grid" rows="* * *">
+              <StackLayout row="0" class="Activity--Content">
+                <FlexboxLayout flexDirection="row" alignItems="center" justifyContent="space-between">
+                  <Label class="roboto-regular Activity-Desc" text="Reached Streak 10"></Label>
+                  <StackLayout orientation="horizontal">
+                    <Label class="roboto-regular Like-Count" text="21"></Label>
+                    <Image class="Like-Btn" src="~/assets/images/icons/heart-fill.png"></Image>
+                  </StackLayout>
+                </FlexboxLayout>
+              </StackLayout>
+              <FlexboxLayout row="1" class="Activity--Frequency" alignItems="center" justifyContent="center">
+                <Label text="Hidrate Activity" class="Streak--Activity" color="#F5BF55"></Label>
+              </FlexboxLayout>
+              <FlexboxLayout row="2" class="Activity--Frequency" flexDirection="row" alignItems="center"
+                justifyContent="space-between">
+                <Label text="2d ago" class="Streak--Activity"></Label>
+                <StackLayout orientation="horizontal">
+                  <Label text="Private" class="Streak--Activity"></Label>
+                  <Image class="Sharably-Btn" src="~/assets/images/icons/locked-grey.png"></Image>
+                </StackLayout>
+              </FlexboxLayout>
+            </GridLayout>
+          </CardView>
+        </StackLayout>
+      </StackLayout>
+      <!-- Tab Contents - PersonalFeed -->
+    </GridLayout>
   </StackLayout>
 </GridLayout>
