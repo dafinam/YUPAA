@@ -26,12 +26,18 @@
     }
   }
 
+  ListView {
+    separator-color: white;
+  }
+
+  .GoalList {
+  }
 
   .Goal--Card {
     margin-left: 3%;
     margin-right: 3%;
     margin-top: 10;
-    height: 150;
+    height: 130;
     border-radius: 15;
 
     .Goal--Info {

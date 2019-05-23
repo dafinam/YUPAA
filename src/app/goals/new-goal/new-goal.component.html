@@ -1,0 +1,35 @@
+<GridLayout class="page page-content" rows="30 *">
+  <FlexboxLayout class="Activity--Title" row="0" flexDirection="row" alignItems="flex-start"
+    justifyContent="space-between">
+    <StackLayout></StackLayout>
+    <Label class="roboto-regular Title" text="New Goal"></Label>
+    <Image class="Close--Btn" src="~/assets/images/icons/close-btn-fill.png" width="20" (tap)="goBack()"></Image>
+  </FlexboxLayout>
+
+  <GridLayout class="Activity--Content" rows="130 *" row="1">
+    <StackLayout class="Subsection" row="0">
+      <Label class="Question--Label" text="Ready to tackle a new challenge?" textWrap="true"></Label>
+      <FlexboxLayout class="Description--Wrapper" flexDirection="row" alignItems="flex-start">
+        <Image src="~/assets/images/icons/warning-fill.png" width="40" marginTop="5"></Image>
+        <Label class="Section--Info" text="Setting up a new goal is as simple as giving it a name and a due date. Short, simple and achievable goals are strongly recommended. Start small and you will achieve greatness. We will notify you as the due date approaches." textWrap="true"></Label>
+      </FlexboxLayout>
+    </StackLayout>
+    
+    <FlexboxLayout class="Config" row="1" flexDirection="column" alignItems="flex-start" justifyContent="space-between">
+      <StackLayout class="Input-Container">
+        <StackLayout class="Input-Item-Wrapper">
+          <TextField class="roboto-thin goal-input" [(ngModel)]="goalName" autocorrect="false" hint="Goal Name"
+            returnKeyType="done" maxLength="30"></TextField>
+        </StackLayout>
+        <StackLayout class="Input-Item-Wrapper">
+          <TextField class="roboto-thin goal-input" [(ngModel)]="goalDueDate" editable="false"></TextField>
+          <Label class="time-picker-label" text="Pick Due Date" (tap)="onPickDateTap($event)"></Label>
+        </StackLayout>
+      </StackLayout>
+      <StackLayout class="summary-btn-wrapper">
+        <Button class="kickoff-btn" text="Let's do this!" textTransform="none" (tap)="createNewGoal()"
+          [isEnabled]="!isSubmitting"></Button>
+      </StackLayout>
+    </FlexboxLayout>
+  </GridLayout>
+</GridLayout>

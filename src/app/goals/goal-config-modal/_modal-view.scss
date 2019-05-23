@@ -1,0 +1,40 @@
+@import '../../app.component';
+
+.modal-container {
+  
+
+  .modal-wrapper {
+    border-radius: 15;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
+
+    .Title-Wrapper {
+      width: 100%;
+
+      Label {
+        color: rgba($color: #FFFFFF, $alpha: 0.5);
+        font-size: 14;
+      }
+    }
+
+    .Goal-Name {
+      width: 100%;
+      Label {
+        font-size: 30%;
+        color: $behance-white;
+      }
+    }
+
+    .Action-Wrapper {
+      width: 100%;
+      Button {
+        color: $behance-white;
+        font-size: 18;
+        letter-spacing: 0.02;
+      }
+    }
+  }
+}

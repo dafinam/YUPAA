@@ -1,0 +1,19 @@
+@import '../../app.component';
+@import "./../../newactivity/generic/generic-activity.component";
+
+
+.Input-Container {
+  margin-top: 10%;
+  width: 100%;
+
+  .Input-Item-Wrapper {
+    margin-bottom: 20%;
+    .goal-input {
+      color: rgb(132, 133, 136);
+    }
+
+    .time-picker-label {
+      margin-top: 15;
+    }
+  }
+}

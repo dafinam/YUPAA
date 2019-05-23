@@ -31,13 +31,14 @@ export class HomeComponent implements OnInit {
 
   get userGreet() {
     if (this.loggedUser) {
-      const curHr = new Date().getHours()
+      const curHr = new Date().getHours();
       let greet = "Good evening";
       if (curHr < 12) {
         greet = "Good morning";
       } else if (curHr < 18) {
         greet = "Good afternoon";
       }
+
       return `${greet}, ${this.loggedUser.nickname}!`;
     }
 
@@ -45,7 +46,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('----- Loading Home');
     this.isLoading = true;
     /* Check if the user is logged in by calling isUserLoggedIn on userService */
     this.userService.isUserLoggedIn()
@@ -158,11 +158,16 @@ export class HomeComponent implements OnInit {
           });
         }
       }
-
-      this.timeBasedActivities = timeActivities;
       this.timeBasedActivityKeys = Object.keys(timeActivities).sort(
         (a, b) => (parseInt(a, 10) > parseInt(b, 10)) ? 1 : ((parseInt(b, 10) > parseInt(a, 10)) ? -1 : 0)
       );
+      const sortedActivities = [];
+      for (const time of this.timeBasedActivityKeys) {
+        for (const activityTime of timeActivities[time]) {
+          sortedActivities.push(activityTime);
+        }
+      }
+      this.timeBasedActivities = sortedActivities;
     } else {
       /* User has not subscribed for any Yupaa Activities, Goals .... */
       this.isLoading = false;

@@ -1,0 +1,16 @@
+<ModalStack class="modal-container">
+  <CardView class="Feed-Card" shadowColor="#FFFFFF" shadowRadius="5" shadowOpacity="1" elevation="7" radius="2">
+    <GridLayout class="modal-wrapper" rows="50 130 50" (tap)="closeModal()" [backgroundColor]="background">
+      <FlexboxLayout class="Title-Wrapper" row="0" flexDirection="row" alignItems="center" justifyContent="space-between">
+        <Label class="roboto-bold" text="Goal"></Label>
+        <Label class="roboto-bold" [text]="goalDueDate"></Label>
+      </FlexboxLayout>
+      <FlexboxLayout row="1" class="Goal-Name" flexDirection="row" alignItems="center" justifyContent="flex-start">
+        <Label class="roboto-regular" [text]="goalDescription" textWrap="true"></Label>
+      </FlexboxLayout>
+      <FlexboxLayout row="2" class="Action-Wrapper" alignItems="center" justifyContent="center">
+        <Button (tap)="completeGoal()" class="roboto-regular" text="I've done it!"></Button>
+      </FlexboxLayout>
+    </GridLayout>
+  </CardView>
+</ModalStack>

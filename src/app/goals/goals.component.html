@@ -6,50 +6,81 @@
   </FlexboxLayout>
   <!-- THE ACTION/PAGE-TITLE BAR -->
 
-  <ScrollView orientation="vertical" row="1">
-    <StackLayout class="Activity--Wrapper">
-      <StackLayout class="Day--Title">
+  <GridLayout [rows]="contentGridRows" row="1">
+    <!-- Active Goals -->
+    <GridLayout rows="50 *" class="Activity--Wrapper" row="0" *ngIf="userActiveGoals.length > 0">
+      <StackLayout class="Day--Title" row="0">
         <Label class="Day-h1" text="Ongoing Goals"></Label>
         <Button width="30" height="5" class="hr"></Button>
       </StackLayout>
-  
-      <!-- A time of the day -->
-      <FlexboxLayout class="Goal--Card" flexDirection="column" alignItems="center" justifyContent="space-between" backgroundColor="#6A9BEB">
-        <StackLayout class="Goal--Info">
-          <Label class="roboto-bold Title" text="Read a book"></Label>
-          <Label class="roboto-regular Target--Date" text="Target date: 30/12/2019"></Label>
-        </StackLayout>
-        <StackLayout class="Goal--Progress">
-          <Label class="roboto-bold Percentage" text="53%"></Label>
-          <Progress (loaded)="onProgressBarLoaded($event, 53)" class="ProgressBar">
-          </Progress>
-        </StackLayout>
-      </FlexboxLayout>
 
-      <FlexboxLayout class="Goal--Card" flexDirection="column" alignItems="center" justifyContent="space-between" backgroundColor="#A997DF">
-        <StackLayout class="Goal--Info">
-          <Label class="roboto-bold Title" text="Complete Norwegian Course"></Label>
-          <Label class="roboto-regular Target--Date" text="Target date: 30/12/2019"></Label>
-        </StackLayout>
-        <StackLayout class="Goal--Progress">
-          <Label class="roboto-bold Percentage" text="10%"></Label>
-          <Progress (loaded)="onProgressBarLoaded($event, 10)" class="ProgressBar">
-          </Progress>
-        </StackLayout>
-      </FlexboxLayout>
-      <FlexboxLayout class="Goal--Card" flexDirection="column" alignItems="center" justifyContent="space-between" backgroundColor="#6A9BEB">
-        <StackLayout class="Goal--Info">
-          <Label class="roboto-bold Title" text="Lose 10kg"></Label>
-          <Label class="roboto-regular Target--Date" text="Target date: 30/12/2019"></Label>
-        </StackLayout>
-        <StackLayout class="Goal--Progress">
-          <Label class="roboto-bold Percentage" text="90%"></Label>
-          <Progress (loaded)="onProgressBarLoaded($event, 90)" class="ProgressBar">
-          </Progress>
-        </StackLayout>
-      </FlexboxLayout>
-      <!-- A time of the day -->
+      <ListView [items]="userActiveGoals" class="GoalList" row="1">
+        <ng-template let-goal="item" let-i="index" let-odd="odd" let-even="even">
+          <FlexboxLayout class="Goal--Card" flexDirection="column" alignItems="center" justifyContent="space-between"
+            [backgroundColor]="odd ? '#6A9BEB' : '#A997DF'" (tap)="openModal(goal, odd)">
+            <StackLayout class="Goal--Info">
+              <Label class="roboto-bold Title" [text]="goal.name"></Label>
+              <Label class="roboto-regular Target--Date" [text]="'Target date: ' + goal.dueDate"></Label>
+            </StackLayout>
+            <StackLayout class="Goal--Progress">
+              <Label class="roboto-bold Percentage" [text]="daysLeft(goal.dueDate)"></Label>
+              <Progress (loaded)="onProgressBarLoaded($event, goal.dueDate, goal.addedOn)" class="ProgressBar">
+              </Progress>
+            </StackLayout>
+          </FlexboxLayout>
+        </ng-template>
+      </ListView>
+    </GridLayout>
+    <!-- Active Goals -->
+
+    <!-- Completed Goals -->
+    <GridLayout rows="50 *" class="Activity--Wrapper" row="1" *ngIf="userCompletedGoals.length > 0">
+      <StackLayout class="Day--Title" row="0" >
+        <Label class="Day-h1" text="Completed Goals"></Label>
+        <Button width="30" height="5" class="hr"></Button>
+      </StackLayout>
+
+      <ListView [items]="userCompletedGoals" class="GoalList" row="1">
+        <ng-template let-goal="item" let-i="index" let-odd="odd" let-even="even">
+          <FlexboxLayout class="Goal--Card" flexDirection="column" alignItems="center" justifyContent="space-between"
+            backgroundColor="#40DC8B">
+            <StackLayout class="Goal--Info">
+              <Label class="roboto-bold Title" [text]="goal.name"></Label>
+              <Label class="roboto-regular Target--Date" [text]="'Target date: ' + goal.dueDate"></Label>
+            </StackLayout>
+            <StackLayout class="Goal--Progress">
+              <Progress (loaded)="completedProgressBar($event)" class="ProgressBar">
+              </Progress>
+            </StackLayout>
+          </FlexboxLayout>
+        </ng-template>
+      </ListView>
+    </GridLayout>
+    <!-- Completed Goals -->
+
+    <!-- Failed Goals -->
+    <GridLayout rows="50 *" class="Activity--Wrapper" row="2" *ngIf="userFailedGoals.length > 0">
+      <StackLayout class="Day--Title" row="0">
+        <Label class="Day-h1" text="Failed Goals"></Label>
+        <Button width="30" height="5" class="hr"></Button>
+      </StackLayout>
   
-    </StackLayout>
-  </ScrollView>
+      <ListView [items]="userFailedGoals" class="GoalList" row="1">
+        <ng-template let-goal="item" let-i="index" let-odd="odd" let-even="even">
+          <FlexboxLayout class="Goal--Card" flexDirection="column" alignItems="center" justifyContent="space-between"
+            backgroundColor="#FE5857">
+            <StackLayout class="Goal--Info">
+              <Label class="roboto-bold Title" [text]="goal.name"></Label>
+              <Label class="roboto-regular Target--Date" [text]="'Target date was: ' + goal.dueDate"></Label>
+            </StackLayout>
+            <StackLayout class="Goal--Progress">
+              <Progress (loaded)="completedProgressBar($event)" class="ProgressBar">
+              </Progress>
+            </StackLayout>
+          </FlexboxLayout>
+        </ng-template>
+      </ListView>
+    </GridLayout>
+    <!-- Completed Goals -->
+  </GridLayout>
 </GridLayout>

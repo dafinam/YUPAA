@@ -26,7 +26,7 @@
 
         .Title {
             font-size: 15%;
-            color: #CFD0D5;
+            color: $title-grey;
         }
         .Number {
             font-size: 50%;
@@ -53,8 +53,8 @@
 
                 .Activity-Name {
                     margin-top: 5;
-                    font-size: 14;
-                    color: #CFD0D5;
+                    font-size: 12;
+                    color: $title-grey;
                 }
             }
         }
@@ -69,12 +69,12 @@
         .hr {
             width: 100%;
             border-bottom-width: 1;
-            border-bottom-color: #CFD0D5;
+            border-bottom-color: $title-grey;
         }
         .Input-Caption {
             font-size: 14;
             margin-top: 5;
-            color: #CFD0D5;
+            color: $title-grey;
         }
     }
 

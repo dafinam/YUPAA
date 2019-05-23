@@ -8,16 +8,16 @@
   </FlexboxLayout>
   <!-- THE ACTION/PAGE-TITLE BAR -->
 
-  <ScrollView row="1">
-    <StackLayout class="Activity--Wrapper">
-      <StackLayout class="Day--Title">
-        <Label class="Day-h1" text="Today"></Label>
-        <Button width="30" height="5" class="hr"></Button>
-      </StackLayout>
-      
-      <!-- A time of the day -->
-      <StackLayout *ngFor="let militaryTime of timeBasedActivityKeys">
-        <FlexboxLayout *ngFor="let activity of timeBasedActivities[militaryTime]" [class]="'Activity--Item ' + (isActivityOverdue(militaryTime) ? ' Forgotten' : '')" flexDirection="row"
+  <GridLayout rows="30 *" class="Activity--Wrapper" row="1">
+    <StackLayout row="0" class="Day--Title">
+      <Label class="Day-h1" text="Today"></Label>
+      <Button width="30" height="5" class="hr"></Button>
+    </StackLayout>
+    
+    <!-- A time of the day -->
+    <ListView [items]="timeBasedActivities" row="1">
+      <ng-template let-activity="item" let-i="index">
+        <FlexboxLayout [class]="'Activity--Item ' + (isActivityOverdue(activity.time) ? ' Forgotten' : '')" flexDirection="row"
           justifyContent="space-between" (tap)="logActivityTime(activity.activityKey, activity.time)">
           <FlexboxLayout class="Icon-Title" flexDirection="row" alignItems="center" justifyContent="flex-start">
             <StackLayout class="Activity--Icon" verticalAlignment="center"
@@ -26,15 +26,14 @@
             </StackLayout>
             <Label class="roboto-regular Activity--Title" [text]="formatActivityName(activity.activityName)"></Label>
           </FlexboxLayout>
-          <Label [class]="'roboto-thin Activity--Time ' + (isActivityOverdue(militaryTime) ? ' overdueTime': '')"
-            [text]="militaryToDisplayTime(militaryTime)">
+          <Label [class]="'roboto-thin Activity--Time ' + (isActivityOverdue(activity.time) ? ' overdueTime': '')"
+            [text]="militaryToDisplayTime(activity.time)">
           </Label>
         </FlexboxLayout>
-      </StackLayout>
-      <!-- A time of the day -->
-
-    </StackLayout>
-  </ScrollView>
+      </ng-template>
+    </ListView>
+    <!-- A time of the day -->
+  </GridLayout>
 
   <FlexboxLayout class="NoActivity" *ngIf="!isLoading && noActivities" row="1" flexDirection="column" alignItems="center" justifyContent="space-between">
     <Image class="NoActivity--Image" src="~/assets/images/icons/goal.png"></Image>

@@ -7,6 +7,7 @@ import { LoginComponent } from "./login/login.component";
 import { HidrateComponent } from "./newactivity/hidrate/hidrate.component";
 import { GenericActivityComponent } from "./newactivity/generic/generic-activity.component";
 import { DoGenericActivityComponent } from "./home/generic-activity/do-generic.component";
+import { NewGoalComponent } from "./goals/new-goal/new-goal.component";
 
 const routes: Routes = [
     { path: "", redirectTo: "/tabs/default", pathMatch: "full" },
@@ -15,7 +16,8 @@ const routes: Routes = [
     { path: "tabs", loadChildren: "~/app/tabs/tabs.module#TabsModule" },
     { path: "hidrate", component: HidrateComponent },
     { path: "activity/:activityname", component: GenericActivityComponent },
-    { path: "log-generic/:activitykey/:time", component: DoGenericActivityComponent }
+    { path: "log-generic/:activitykey/:time", component: DoGenericActivityComponent },
+    { path: "new-goal", component: NewGoalComponent }
 ];
 
 @NgModule({

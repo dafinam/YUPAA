@@ -5,7 +5,7 @@
   </FlexboxLayout>
   <!-- THE ACTION/PAGE-TITLE BAR -->
 
-  <GridLayout row="1" class="Page-Content" columns="*" rows="* 2* 2* *">
+  <GridLayout row="1" class="Page-Content" columns="*" rows="* 2* 2* *" *ngIf="!isLoading">
     <FlexboxLayout row="0" class="Profile-Header" flexDirection="row" alignItems="center" justifyContent="space-between">
       <FlexboxLayout class="Avatar--Border" alignItems="center" justifyContent="center">
         <Image row="0" col="0" [src]="userImageUrl" stretch="aspectFill" class="Avatar"></Image>
@@ -22,23 +22,12 @@
       </StackLayout>
       <ScrollView orientation="horizontal" row="1">
         <StackLayout orientation="horizontal" class="Activity-Items-Wrapper">
-          <FlexboxLayout class="Activity-Item" flexDirection="column" alignItems="center" justifyContent="center">
-            <StackLayout class="Activity-Icon-Wrapper" backgroundColor="#59D2FE">
-              <Image class="Icon" src="~/assets/images/icons/drop.png"></Image>
+          <FlexboxLayout *ngFor="let activity of userActivities" class="Activity-Item" flexDirection="column" alignItems="center"
+            justifyContent="center">
+            <StackLayout class="Activity-Icon-Wrapper" [backgroundColor]="stylingData(activity.key).pageBackground || '#A6A6A6'">
+              <Image class="Icon" [src]="stylingData(activity.key).icon"></Image>
             </StackLayout>
-            <Label class="roboto-regular Activity-Name" text="Hidrate"></Label>
-          </FlexboxLayout>
-          <FlexboxLayout class="Activity-Item" flexDirection="column" alignItems="center" justifyContent="center">
-            <StackLayout class="Activity-Icon-Wrapper" backgroundColor="#C7EFCF">
-              <Image class="Icon" src="~/assets/images/icons/stretching-white.png"></Image>
-            </StackLayout>
-            <Label class="roboto-regular Activity-Name" text="Stretching"></Label>
-          </FlexboxLayout>
-          <FlexboxLayout class="Activity-Item" flexDirection="column" alignItems="center" justifyContent="center">
-            <StackLayout class="Activity-Icon-Wrapper" backgroundColor="#F0B67F">
-              <Image class="Icon" src="~/assets/images/icons/breakfast-white.png"></Image>
-            </StackLayout>
-            <Label class="roboto-regular Activity-Name" text="Breakfast"></Label>
+            <Label class="roboto-thin Activity-Name" [text]="activity.name"></Label>
           </FlexboxLayout>
         </StackLayout>
       </ScrollView>

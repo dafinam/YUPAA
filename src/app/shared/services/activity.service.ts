@@ -43,7 +43,7 @@ export class ActivityService {
     });
   }
 
-  logActivity(docId: string, newLog: IActivityLog): Promise<void> {
+  logActivity(docId: string, newLog: IActivityLog): Promise<any> {
     return new Promise((resolve, reject) => {
       this.getActivity(docId)
       .then((activity: Activity) => {
