@@ -37,44 +37,48 @@
     separator-color: white;
   }
 
-  .Activity--Item {
-    margin-left: 1%;
-    margin-right: 1%;
-    height: 60;
-    margin-top: 15;
-    animation-name: slideInUp;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
+  .ScrollContent {
+    padding-left: 10;
+    padding-right: 10;
+    .Activity--Item {
+      margin-left: 1%;
+      margin-right: 1%;
+      height: 60;
+      margin-top: 15;
+      animation-name: slideInUp;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
 
-    .Icon-Title {
-      width: 80%;
+      .Icon-Title {
+        width: 80%;
 
-      .Activity--Icon {
-        width: 50;
-        height: 50;
-        border-radius: 12;
-        text-align: center;
-        margin-left: 10;
-        Image {
-          width: 30;
-          height: 30;
+        .Activity--Icon {
+          width: 50;
+          height: 50;
+          border-radius: 12;
+          text-align: center;
+          margin-left: 10;
+          Image {
+            width: 30;
+            height: 30;
+          }
+        }
+        .Activity--Title {
+          font-size: 14;
+          color: #000000;
+          margin-left: 25;
         }
       }
-      .Activity--Title {
-        font-size: 14;
-        color: #000000;
-        margin-left: 25;
+      .Activity--Time {
+        width: 20%;
+        font-size: 12;
+        opacity: 0;
+        color: $quick-silver;
+        animation-name: fadeIn;
+        animation-duration: 1s;
+        animation-delay: 1s;
+        animation-fill-mode: forwards;
       }
-    }
-    .Activity--Time {
-      width: 20%;
-      font-size: 12;
-      opacity: 0;
-      color: $quick-silver;
-      animation-name: fadeIn;
-      animation-duration: 1s;
-      animation-delay: 1s;
-      animation-fill-mode: forwards;
     }
   }
 

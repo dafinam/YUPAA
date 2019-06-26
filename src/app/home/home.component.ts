@@ -39,7 +39,8 @@ export class HomeComponent implements OnInit {
         greet = "Good afternoon";
       }
 
-      return `${greet}, ${this.loggedUser.nickname}!`;
+      // return `${greet}, ${this.loggedUser.nickname}!`;
+      return `${greet}, Lucy!`;
     }
 
     return "";

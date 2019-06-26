@@ -33,7 +33,10 @@ export class TabsComponent implements OnInit {
   }
 
   getIconSource(icon: string): string {
-    const iconPrefix = isAndroid ? "res://" : "res://tabIcons/";
+    if (isAndroid) {
+      return "";
+    }
+    const iconPrefix = "res://tabIcons/";
 
     return iconPrefix + icon;
   }

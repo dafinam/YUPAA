@@ -9,7 +9,7 @@
         <Label class="roboto-regular" [text]="goalDescription" textWrap="true"></Label>
       </FlexboxLayout>
       <FlexboxLayout row="2" class="Action-Wrapper" alignItems="center" justifyContent="center">
-        <Button (tap)="completeGoal()" class="roboto-regular" text="I've done it!"></Button>
+        <Button (tap)="completeGoal()" [backgroundColor]="background" class="roboto-regular" text="I've done it!"></Button>
       </FlexboxLayout>
     </GridLayout>
   </CardView>

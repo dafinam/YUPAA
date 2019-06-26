@@ -104,6 +104,7 @@ export class GoalsComponent implements OnInit {
   }
 
   openModal(goal: Goal, odd: boolean): void {
+    this.isLoading = true;
     const options: ModalDialogOptions = {
       viewContainerRef: this.vcRef,
       context: {
@@ -127,6 +128,8 @@ export class GoalsComponent implements OnInit {
             // TODO: Show some sort of notification
             this.isLoading = false;
           });
+        } else {
+          this.isLoading = false;
         }
       });
   }

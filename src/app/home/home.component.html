@@ -8,17 +8,17 @@
   </FlexboxLayout>
   <!-- THE ACTION/PAGE-TITLE BAR -->
 
-  <GridLayout rows="30 *" class="Activity--Wrapper" row="1">
+  <GridLayout rows="50 *" class="Activity--Wrapper" row="1" *ngIf="!isLoading">
     <StackLayout row="0" class="Day--Title">
       <Label class="Day-h1" text="Today"></Label>
       <Button width="30" height="5" class="hr"></Button>
     </StackLayout>
     
     <!-- A time of the day -->
-    <ListView [items]="timeBasedActivities" row="1">
-      <ng-template let-activity="item" let-i="index">
-        <FlexboxLayout [class]="'Activity--Item ' + (isActivityOverdue(activity.time) ? ' Forgotten' : '')" flexDirection="row"
-          justifyContent="space-between" (tap)="logActivityTime(activity.activityKey, activity.time)">
+    <ScrollView row="1">
+      <StackLayout class="ScrollContent">
+        <FlexboxLayout *ngFor="let activity of timeBasedActivities" [class]="'Activity--Item ' + (isActivityOverdue(activity.time) ? ' Forgotten' : '')" flexDirection="row"
+          justifyContent="space-between" alignItems="center" (tap)="logActivityTime(activity.activityKey, activity.time)">
           <FlexboxLayout class="Icon-Title" flexDirection="row" alignItems="center" justifyContent="flex-start">
             <StackLayout class="Activity--Icon" verticalAlignment="center"
               [backgroundColor]="stylingData(activity).pageBackground || '#A6A6A6'">
@@ -27,11 +27,11 @@
             <Label class="roboto-regular Activity--Title" [text]="formatActivityName(activity.activityName)"></Label>
           </FlexboxLayout>
           <Label [class]="'roboto-thin Activity--Time ' + (isActivityOverdue(activity.time) ? ' overdueTime': '')"
-            [text]="militaryToDisplayTime(activity.time)">
+            [text]="activity.time">
           </Label>
         </FlexboxLayout>
-      </ng-template>
-    </ListView>
+      </StackLayout>
+    </ScrollView>
     <!-- A time of the day -->
   </GridLayout>
 
@@ -43,5 +43,5 @@
       <Image src="~/assets/images/icons/down-arrow.png" width="30"></Image>
     </StackLayout>
   </FlexboxLayout>
-
+  <ActivityIndicator row="1" [busy]="isLoading"></ActivityIndicator>
 </GridLayout>
