@@ -21,7 +21,35 @@ export class ActivityStylingData {
         btnMainColor: "#FE5F55",
         icon: "~/assets/images/icons/stretching-white.png",
         activityTitle: "Stretch"
-      }
+      },
+      yupaa_meditation: {
+        pageBackground: "#C7EFCF",
+        btnBorderColor: "#FFFFFF",
+        btnMainColor: "#FE5F55",
+        icon: "~/assets/images/icons/stretching-white.png",
+        activityTitle: "Stretch"
+      },
+      yupaa_posture: {
+        pageBackground: "#C7EFCF",
+        btnBorderColor: "#FFFFFF",
+        btnMainColor: "#FE5F55",
+        icon: "~/assets/images/icons/stretching-white.png",
+        activityTitle: "Stretch"
+      },
+      yupaa_walk: {
+        pageBackground: "#C7EFCF",
+        btnBorderColor: "#FFFFFF",
+        btnMainColor: "#FE5F55",
+        icon: "~/assets/images/icons/stretching-white.png",
+        activityTitle: "Stretch"
+      },
+      yupaa_study: {
+        pageBackground: "#C7EFCF",
+        btnBorderColor: "#FFFFFF",
+        btnMainColor: "#FE5F55",
+        icon: "~/assets/images/icons/stretching-white.png",
+        activityTitle: "Stretch"
+      },
     };
   }
 }

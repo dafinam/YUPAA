@@ -97,6 +97,7 @@ export class HomeComponent implements OnInit {
   }
 
   logActivityTime(activityKey: string, time: string): void {
+    // console.log('DEBUG | Logging time for activity:', activityKey);
     this.router.navigate([`log-generic/${activityKey}/${time}`], {
       animated: true,
       transition: {

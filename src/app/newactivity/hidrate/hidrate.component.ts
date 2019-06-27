@@ -122,7 +122,7 @@ export class HidrateComponent implements OnInit {
           this.dinnerTime,
           this.sleepTime
         ],
-        reminders: ["mon", "tue", "wed", "thur", "fri", "sat", "sun"]
+        reminders: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
       });
       this.activityService.addActivity(hidrateActivity)
         .then(() => this.userService.addUserActivity({ name: "yupaa_hidrate", status: "active"}))

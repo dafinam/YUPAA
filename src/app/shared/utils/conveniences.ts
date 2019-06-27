@@ -22,7 +22,7 @@ export const dayOfWeekIdxToStr = (day: number) => {
     case 3:
       return "wed";
     case 4:
-      return "thur";
+      return "thu";
     case 5:
       return "fri";
     case 6:
