@@ -132,7 +132,7 @@ export class HidrateComponent implements OnInit {
             transition: {
               curve: "linear",
               duration: 300,
-              name: "slideDown"
+              name: "fade"
             },
             clearHistory: true
           });

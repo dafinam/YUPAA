@@ -86,7 +86,7 @@ export class NewGoalComponent implements OnInit, OnDestroy {
               transition: {
                 curve: "linear",
                 duration: 300,
-                name: "slideDown"
+                name: "fade"
               },
               clearHistory: true
             });
